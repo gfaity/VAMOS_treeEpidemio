@@ -1,0 +1,352 @@
+---
+title: "TREE EPIDEMIO"
+format:
+  html:
+    self-contained: true
+---
+
+
+Le but est d'avoir un arbre / diagramme de classement qui soit clair et très beau idéal pour la publication dans un journal scientifique international indexé.
+Dans l'idée je vais avoir une trentaine d'article, et pour chacun ils ont plusieurs informaitons. 
+Par exemple device (actigraph, ou autre), position du device (hanche, poignet, cheville, autre), epoch duration (60s, 10s, 10min etc), drop time ou grace period, et potentiellement intensity (mais ça je vais probablement pas le mettre, ou alors en dernier juste de maniere informative).
+
+Le but est de faire avec des fonctions pour que je puisse changer facilement des éléments (par exemple changer l'odre des facteurs pour l'ordonation dans l'arbre, changer le type d'arbre etc).
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE
+)
+#.vsc.attach()
+rm(list = ls()) # clear all variable
+gc() #clear garbage to free memory
+```
+
+# Not Run
+Pour installer ggtree et Biostrings:
+
+### Biostrings
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Biostrings")
+
+### ggtree
+library(BiocManager)
+BiocManager::install("ggtree")
+
+```{r}
+#| echo: true
+#| code-fold: false
+
+# libraries
+library(dplyr) # manipulation de dataframes
+library(tidyr) # opération sur les dataframes
+library(ggplot2) # génération de graphique
+library(ape) # créer des objets arbres
+library(ggtree) # graphique arbres
+library(tidytree) # manipulation d'arbres data
+library(gtools) #for the function permutations
+
+# WRK_PATH est le chemin vers le répertoire où se trouve notre projet et où se trouvent les fichiers mocap.
+# Vous devrez ajuster ce chemin en fonction de votre propre répertoire.
+WRK_PATH <- "C:/Users/germa/OneDrive/Documents/GitHub/VAMOS_treeEpidemio"
+
+# La fonction `setwd()` change le répertoire de travail pour celui que nous avons défini dans WRK_PATH.
+# Cela signifie que toute lecture/écriture de fichiers se fera à partir de ce répertoire.
+setwd(WRK_PATH)
+
+# On utilise la fonction `getwd()` pour afficher le répertoire de travail actuel et vérifier que le changement a bien eu lieu.
+cat("Répertoire de travail actuel :", getwd(), "\n")
+
+# Ensuite, nous définissons le chemin vers le dossier contenant les données à traiter et le chemin pour les résultats.
+# Ce dossier se trouve à l'intérieur de notre répertoire de travail.
+DAT_PATH <- file.path(WRK_PATH, "data")
+FCT_PATH <- file.path(WRK_PATH, "FCT") #dossier contenant les fonctions R
+RES_PATH <- file.path(WRK_PATH, "RES")
+
+# On affiche également le chemin vers les données pour s'assurer qu'il est correct.
+cat("Répertoire des données :", DAT_PATH, "\n")
+
+# Lire les fonctions R
+r_files <- list.files(FCT_PATH, pattern = "\\.R$", full.names = TRUE)
+# Charger chaque fichier .R sans afficher de sortie
+invisible(lapply(r_files, source))
+# Afficher le nombre de fichiers .R chargés
+cat(length(r_files), "fichiers .R chargés avec succès.\n")
+```
+
+# Étape 1 : Création d'un tableau fictif
+Voici un jeu de données fictif basé sur les informations fournies. Vous pouvez copier et coller ce tableau dans votre code R pour créer l'arbre.
+~
+```{r}
+#TODO: set this if chunk to TRUE if we want to simulate random data
+
+#we need to define this anyway
+thisDAT_PATH_simu <- file.path(DAT_PATH, "articlesByFeature_simu.csv")
+
+if (FALSE){
+  # control randomness
+  set.seed(1112) #1111
+  
+  # Set things
+  nArticles = 30 #10
+  myDevices = c("Other", "Garmin", "Fitbit", "Actigraph")
+  myPositions = c("Other", "Ankle", "Wrist", "Hip")
+  myEpochDurations = c("10s", "30s", "60s", "10min")
+  myDropTimes = c("None", "1s", "5s", "10s")
+  
+  # Create dataframe
+  data_simu <- data.frame(
+    StudyID = paste0("Study_", 1:nArticles),
+    Device = sample(myDevices, nArticles, replace = TRUE),
+    Position = sample(myPositions, nArticles, replace = TRUE),
+    EpochDuration = sample(myEpochDurations, nArticles, replace = TRUE),
+    DropTime = sample(myDropTimes, nArticles, replace = TRUE)
+  )
+  
+  # Reordonnez chaque variable dans l'ordre spécifié
+  data_simu <- data_simu %>%
+    mutate(
+      Device = factor(Device, levels = myDevices), # Ordre désiré
+      Position = factor(Position, levels = myPositions),  
+      EpochDuration = factor(EpochDuration, levels = myEpochDurations),
+      DropTime = factor(DropTime, levels = myDropTimes)
+    )
+  
+  # inform user
+  print(data_simu)
+  
+  # export this dataframe in a csv file for later use
+  write.csv2(data_simu, thisDAT_PATH_simu, row.names = FALSE, col.names = TRUE)
+}
+```
+
+# Étape 2 : Code pour générer l'arbre avec ggplot2
+Ce code crée un arbre hiérarchique avec des fonctions personnalisables pour ajuster l’ordre des facteurs ou le style de l’arbre.
+
+## Fonctions
+
+```{r}
+# Fonction pour créer la chaîne Newick avec les StudyID comme feuilles
+create_newick <- function(data, levels) {
+  if (length(levels) == 1) {
+    # Dernier niveau : utiliser les StudyID comme feuilles
+    return(paste(data$StudyID, collapse = ","))
+  } else {
+    # Niveau intermédiaire : regrouper par le premier niveau
+    grouped_data <- data %>%
+      group_by(!!sym(levels[1])) %>%
+      arrange(!!sym(levels[1])) %>%  # Assurez-vous que l'ordre des niveaux est respecté
+      group_split()
+    
+    sub_trees <- lapply(grouped_data, function(group) {
+      sub_tree <- create_newick(group, levels[-1])  # Appel récursif pour les niveaux suivants
+      node_label <- unique(group[[levels[1]]])  # Récupérer le label pour ce niveau
+      return(paste0("(", sub_tree, ")", node_label))  # Ajouter le label au nœud
+    })
+    
+    return(paste(sub_trees, collapse = ","))
+  }
+}
+```
+
+```{r}
+# Fonction principale pour créer l'arbre
+create_tree <- function(data, variable_order = c("Position", "Device", "DropTime", "EpochDuration", "StudyID")) {
+  
+  # Vérifier que toutes les variables de l'ordre existent dans le dataframe
+  if (!all(variable_order %in% names(data))) {
+    stop("Les variables spécifiées dans 'variable_order' ne sont pas toutes présentes dans le dataframe.")
+  }
+  
+  # Regrouper les données en fonction de l'ordre des variables
+  hierarchical_data <- data %>%
+    group_by(across(all_of(variable_order))) %>%
+    arrange(across(all_of(variable_order))) %>%  # Maintenir l'ordre des niveaux
+    summarise(Studies = paste(StudyID, collapse = ", "), .groups = "drop")
+    
+  # Générer la chaîne Newick
+  newick_string <- paste0("(", create_newick(hierarchical_data, variable_order), ");")
+  
+  # Créer l'arbre avec ape
+  tree <- read.tree(text = newick_string)
+
+  # Conservez les nœuds internes dans l'ordre des facteurs
+  #   !!! There is no alternative function in R that can read a Newick string and create an equivalent tree structure while preserving the node order as specified in the Newick string.
+  #     Explanation:
+  #     Newick Format Limitations: The Newick format is designed to represent tree structures where the order of branches (nodes) is not significant. It encodes the tree topology but does not enforce an ordering of nodes. Therefore, when parsing a Newick string, functions like read.tree focus on reconstructing the tree's connections (parent-child relationships) rather than preserving any specific order of nodes as they appear in the string.
+  #     Phylo Object Structure: The phylo object in R, which is the standard structure for phylogenetic trees, does not store information about the order of nodes. It represents the tree using an edge matrix and labels, focusing on the connections between nodes rather than their sequence.
+  #     Internal Reordering: When read.tree parses the Newick string, it often reorders nodes internally for computational efficiency and to standardize the tree structure. This reordering is inherent to how phylogenetic trees are handled in R.
+  # TODO ??
+
+  return(tree)
+}
+```
+
+```{r}
+# Fonction pour ajouter les labels des variables sur l'axe X
+add_variable_labels <- function(tree, variable_order) {
+  # Obtenir le nombre de niveaux
+  num_levels <- length(variable_order)
+  
+  # Créer un dataframe pour les annotations
+  annotation_data <- data.frame(
+    x = seq(1, num_levels),  # Position en X correspondant aux niveaux
+    y = -0.5,  # Position Y en dessous de l'arbre (arbitraire)
+    label = variable_order  # Noms des variables
+  )
+  
+  return(annotation_data)
+}
+```
+
+```{r}
+createSavePlotTree <- function (data, variable_order, savePlot, pathSavePlot, plotTitle){
+  
+  # Génère un arbre fictif
+  #tree <- create_tree(data) # Appeler la fonction avec l'ordre par défaut
+  tree <- create_tree(data, variable_order) # Appeler la fonction avec un ordre personnalisé
+
+  # Générer les annotations pour les noms des variables
+  variable_labels <- add_variable_labels(tree, variable_order)
+
+  # Créer un plot
+  p <- getPlotTree(tree, variable_labels, plotTitle)
+
+  # Print plot
+  print(p)
+
+  # Save plot
+  if (savePlot){
+    #ggsave(filename = file.path(RES_PATH, "Arbre_Descriptif_Publication.png"), plot = p, width = 12, height = 8, dpi = 300)
+    ggsave(filename = pathSavePlot, plot = p, dpi = 300)
+  }
+}
+```
+
+```{r}
+getPlotTree <- function(tree, variable_labels, plotTitle){
+  # remove StudyID from variable_labels
+  variable_labels <- subset(variable_labels, label!="StudyID")
+  if ("DropTime"%in%variable_labels$label) {
+    variable_labels$label[variable_labels$label=="DropTime"] <- "Drop Time"
+  }
+  if ("EpochDuration"%in%variable_labels$label) {
+    variable_labels$label[variable_labels$label=="EpochDuration"] <- "Epoch Duration"
+  }
+
+  # Visualisation avec ggtree
+  p <- ggtree(tree, layout = "rectangular", ladderize = FALSE) +
+    geom_tiplab(size = 4, align = TRUE, linetype = "dotted", color = "gray20") +  # Alignement et style des labels des feuilles
+    #geom_text2(aes(subset = !isTip, label = label), nudge_x = -1.05, hjust = 1, nudge_y = 0, #vjust = 1.2, 
+    #          size = 4, color = "darkblue", fontface = "bold.italic") +  # Labels des nœuds internes en gras
+    geom_label2(aes(subset = !isTip, label = label), nudge_x = -0.05, hjust = 1, nudge_y = 0.05, #vjust = 1.2, 
+              size = 4, color = "darkblue", fontface = "bold.italic", fill="white", alpha = 1, label.size = 0) +  # Labels des nœuds internes en gras
+    theme_tree2(base_size = 12) +  # Base des tailles optimisée pour publication
+    ggtitle(plotTitle) +  # Titre
+    theme(
+      plot.title = element_text(size = 20, face = "bold", hjust = 0.5),  # Titre centré et agrandi
+      axis.text.x = element_blank(),  # Texte de l'axe X supprimé
+      axis.line.x = element_blank(), # Supprimer l'axe X #element_line(color = "gray"),  # Ligne de l'axe X ajoutée
+      axis.line.y = element_blank(),  # Supprimer l'axe Y
+      axis.ticks.x = element_blank(), # Supprimer les ticks sur l'axe X
+      panel.background = element_rect(fill = "white"),  # Fond blanc
+      panel.grid = element_blank(),  # Supprimer les grilles
+      plot.margin = margin(t = 10, r = 10, b = 10, l = 0)  # Ajuster les marges
+    ) +
+    # Ajouter les labels des variables sur l'axe X
+    geom_text(data = variable_labels, aes(x = x, y = y, label = label), nudge_x = -0.25, #-0.05 #vjust = 4,
+              nudge_y = length(tree$tip.label)+1.4, inherit.aes = FALSE, size = 5, color = "gray20", fontface = "bold") +
+    xlim(NA, length(variable_order) + 0.2) +  # Étendre l'axe X
+    coord_cartesian(clip = "off") + # Permet d'afficher les éléments en dehors des limites du graphique +
+    geom_hline(yintercept = length(tree$tip.label)+0.4)
+    
+  # Ajoutez des annotations pour marquer des groupes spécifiques ou des clusters dans l'arbre. Vous pouvez utiliser geom_highlight de la librairie ggtree.
+  #   Potentiellement utile pour mettre en valeur le groupe principal ?
+  #p <- p + geom_hilight(node = 8, fill = "lightblue", alpha = 0.3)  # Exemple pour surligner un cluster
+
+  # Plus simple d'ajouter directement un rectangle manuellement
+  # Spécifiez vos coordonnées ici
+  xmin <- 0.5  # À ajuster selon vos besoins
+  xmax <- 5  # À ajuster selon vos besoins
+  ymin <- 0.5  # À ajuster selon vos besoins
+  ymax <- 8.5 # À ajuster selon vos besoins
+  #p <- p + annotate("rect", xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax,
+  #                  fill = "lightblue", alpha = 0.3)
+  
+  return(p)
+}
+```
+
+# On plot
+
+```{r}
+#IMPORT DATA
+
+# import data this dataframe in a csv file for later use
+#thisDAT_PATH <- file.path(DAT_PATH, "articlesByFeature.csv")
+thisDAT_PATH <- thisDAT_PATH_simu
+data <- read.csv2(thisDAT_PATH)
+
+#############
+
+whichWay = 2 #1 = manual, #2 = automatic (all permutations)
+savePlot = TRUE #TRUE or FALSE to save plot in PNG
+
+## WAY 1: on sait ce que l'on veut
+
+if (whichWay==1){
+  # Expliquer ce qu'on veut
+  variable_order = c("Position", "Device", "DropTime", "EpochDuration", "StudyID")
+  #variable_order = c("Position", "Device", "DropTime", "StudyID")
+  #variable_order = c("Position", "Device", "StudyID")
+
+  pathSavePlot = file.path(RES_PATH, "Arbre_Descriptif_Publication.png")
+  plotTitle = "Classification of Studies by Method"
+  # Get tree, plot and save it
+  #   it is simple so we can loop it easily to change variable_order or typeOfPlot
+  createSavePlotTree(data, variable_order, savePlot, pathSavePlot, plotTitle)
+
+} else if (whichWay==2){
+  # Variables à permuter (sans 'StudyID')
+  variables_to_permute <- c("Position", "Device", "DropTime", "EpochDuration")
+
+  # Générer toutes les permutations possibles
+  permutations <- permutations(n = length(variables_to_permute),
+                              r = length(variables_to_permute),
+                              v = variables_to_permute)
+
+  # Boucler sur chaque permutation
+  for (i in 1:nrow(permutations)) {
+    # Obtenir la permutation courante
+    perm <- permutations[i, ]
+    
+    # Construire variable_order en ajoutant 'StudyID' à la fin
+    variable_order <- c(perm, "StudyID")
+    
+    # Construire une chaîne représentant l'ordre des variables
+    variable_order_str <- paste(variable_order, collapse = "_")
+        
+    # Construire le nom du fichier de sortie
+    file_name <- paste0("Arbre_Descriptif_", variable_order_str, ".png")
+    
+    # Chemin complet du fichier de sortie
+    output_folder = file.path(RES_PATH, "allPermutations")
+    dir.create(output_folder, recursive = TRUE)
+    pathSavePlot <- file.path(output_folder, file_name)
+    
+    # Titre du graphique (optionnel)
+    plotTitle <- paste("Classification of Studies by", paste(perm, collapse = ", "))
+    
+    # Générer et sauvegarder le plot
+    createSavePlotTree(data, variable_order, savePlot = TRUE, pathSavePlot, plotTitle)
+    
+    # Informer de la progression
+    cat("Plot enregistré pour l'ordre :", variable_order_str, "\n")
+  }
+}
+```
+
+```{r}
+# run above
+```
