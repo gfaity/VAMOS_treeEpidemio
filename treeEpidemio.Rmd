@@ -81,19 +81,19 @@ Voici un jeu de données fictif basé sur les informations fournies. Vous pouvez
 ```{r}
 #TODO: set this if chunk to TRUE if we want to simulate random data
 
+# Set things = specify possibilities in the right order
+nArticles = 30 #10
+myDevices = c("Other", "Garmin", "Fitbit", "Actigraph")
+myPositions = c("Other", "Ankle", "Wrist", "Hip")
+myEpochDurations = c("10s", "30s", "60s", "10min")
+myDropTimes = c("None", "1s", "5s", "10s")
+
 #we need to define this anyway
 thisDAT_PATH_simu <- file.path(DAT_PATH, "articlesByFeature_simu.csv")
 
 if (FALSE){
   # control randomness
   set.seed(1112) #1111
-  
-  # Set things
-  nArticles = 30 #10
-  myDevices = c("Other", "Garmin", "Fitbit", "Actigraph")
-  myPositions = c("Other", "Ankle", "Wrist", "Hip")
-  myEpochDurations = c("10s", "30s", "60s", "10min")
-  myDropTimes = c("None", "1s", "5s", "10s")
   
   # Create dataframe
   data_simu <- data.frame(
@@ -104,17 +104,8 @@ if (FALSE){
     DropTime = sample(myDropTimes, nArticles, replace = TRUE)
   )
   
-  # Reordonnez chaque variable dans l'ordre spécifié
-  data_simu <- data_simu %>%
-    mutate(
-      Device = factor(Device, levels = myDevices), # Ordre désiré
-      Position = factor(Position, levels = myPositions),  
-      EpochDuration = factor(EpochDuration, levels = myEpochDurations),
-      DropTime = factor(DropTime, levels = myDropTimes)
-    )
-  
   # inform user
-  print(data_simu)
+  #print(data_simu)
   
   # export this dataframe in a csv file for later use
   write.csv2(data_simu, thisDAT_PATH_simu, row.names = FALSE, col.names = TRUE)
@@ -288,6 +279,15 @@ getPlotTree <- function(tree, variable_labels, plotTitle){
 thisDAT_PATH <- thisDAT_PATH_simu
 data <- read.csv2(thisDAT_PATH)
 
+# Reordonnez chaque variable dans l'ordre spécifié
+data <- data %>%
+  mutate(
+    Device = factor(Device, levels = myDevices), # Ordre désiré
+    Position = factor(Position, levels = myPositions),  
+    EpochDuration = factor(EpochDuration, levels = myEpochDurations),
+    DropTime = factor(DropTime, levels = myDropTimes)
+  )
+
 #############
 
 whichWay = 2 #1 = manual, #2 = automatic (all permutations)
@@ -336,7 +336,8 @@ if (whichWay==1){
     pathSavePlot <- file.path(output_folder, file_name)
     
     # Titre du graphique (optionnel)
-    plotTitle <- paste("Classification of Studies by", paste(perm, collapse = ", "))
+    #plotTitle <- paste("Classification of Studies by", paste(perm, collapse = ", "))
+    plotTitle <- "Classification of Studies by Method"
     
     # Générer et sauvegarder le plot
     createSavePlotTree(data, variable_order, savePlot = TRUE, pathSavePlot, plotTitle)
