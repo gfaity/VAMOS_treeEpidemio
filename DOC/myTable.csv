@@ -1,0 +1,85 @@
+StudyID;Position;Device;EpochDuration;DropTime;BoutDuration;StudyDetails
+1;Wrist;Axivity AX3;10s;No;10s-2min;Ahmadi et al., 2022
+2;Wrist;Axivity AX3;10s;No;10s-1min;Ahmadi et al., 2023
+3;Wrist;Axivity AX3;10s;No;1-3min;Ahmadi et al., 2023
+4;Wrist;Axivity AX3;10s;No;3-5min;Ahmadi et al., 2023
+5;Wrist;Axivity AX3;10s;No;5-10min;Ahmadi et al., 2023
+6;Wrist;Axivity AX3;10s;No;10+min;Ahmadi et al., 2023
+7;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2012
+8;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2012
+9;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2012
+10;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2012
+11;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2012
+12;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2013
+13;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2013
+14;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2013
+15;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2013
+16;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2013
+17;Waist;Actigraph;30s;No;30+s;Cameron et al., 2017
+18;Waist;Actigraph;30s;Yes;10+min;Cameron et al., 2017
+19;Wrist;Axivity AX3;?;No;1-5min;Cassidy et al., 2018
+20;Wrist;Axivity AX3;?;No;10+min;Cassidy et al., 2018
+21;Waist;Active style pro;60s;No;1+min;Chen et al., 2018
+22;Waist;Active style pro;60s;Yes;10+min;Chen et al., 2018
+23;Waist;Active style pro;60s;No;1-10min;Chen et al., 2020
+24;Waist;Active style pro;60s;Yes;10+min;Chen et al., 2020
+25;Hip;Actical;60s;No;1+min;Clarke & Janssen, 2014
+26;Hip;Actical;60s;No;10+min;Clarke & Janssen, 2014
+27;Hip;Actigraph;60s;No;1+min;De Winter et al., 2018
+28;Hip;Actigraph;60s;No;5+min;De Winter et al., 2018
+29;Hip;Actigraph;60s;No;10+min;De Winter et al., 2018
+30;Hip;Actigraph;60s;No;30+min;De Winter et al., 2018
+31;Hip;Actigraph;60s;No;60+min;De Winter et al., 2018
+32;Upper arm;SenseWear Pro2;?;No;?;Di Blasio et al., 2014
+33;Upper arm;SenseWear Pro2;?;No;5+min;Di Blasio et al., 2014
+34;Upper arm;SenseWear Pro2;?;No;10+min;Di Blasio et al., 2014
+35;Hip;Actical;60s;No;1+min;Diaz et al., 2019
+36;Hip;Actigraph;60s;No;1+min;Dos Santos et al., 2020
+37;Hip;Actigraph;60s;No;10+min;Dos Santos et al., 2020
+38;Hip;Actigraph;60s;No;1+min;Ekelund et al., 2019
+39;Hip;Actical;60s;Yes;10+min;Ekelund et al., 2019
+40;Hip;Actigraph;60s;No;1+min;Fan et al., 2013
+41;Hip;Actigraph;60s;Yes;10+min;Fan et al., 2013
+42;Hip;Actigraph;60s;No;1+min;Gay et al., 2016
+43;Hip;Actigraph;60s;No;10+min;Gay et al., 2016
+44;Waist;Actical;30s;No;30+s;Glazer et al., 2013
+45;Waist;Actical;30s;Yes;10+min;Glazer et al., 2013
+46;Hip;Actigraph;60s;No;1-10min;Jefferis et al., 2016
+47;Hip;Actigraph;60s;No;10+min;Jefferis et al., 2016
+48;Hip;Actigraph;60s;No;1-10min;Jefferis et al., 2018
+49;Hip;Actigraph;60s;No;10+min;Jefferis et al., 2018
+50;Hip;Actigraph;60s;No;1+min;Kheler et al., 2018
+51;Hip;Actigraph;60s;Yes;10+min;Kheler et al., 2018
+52;Hip;Actigraph;60s;No;1+min;Loprinzi et al., 2013
+53;Hip;Actigraph;60s;Yes;10+min;Loprinzi et al., 2013
+54;Hip;Actigraph;60s;No;1-10min;Loprinzi, 2017
+55;Hip;Actigraph;60s;No;10+min;Loprinzi, 2017
+56;Wrist;GENEActiv;60s;No;1+min;Mitchell et al., 2018
+57;Wrist;GENEActiv;60s;Yes;10+min;Mitchell et al., 2018
+58;Hip;Actigraph;?;No;15+s;Rava et al., 2018
+59;Hip;Actigraph;?;Yes;10+min;Rava et al., 2018
+60;Thigh;GENEActiv;10s;No;?s-10min;Ryan et al., 2019
+61;Thigh;GENEActiv;10s;No;10+min;Ryan et al., 2019
+62;Waist;Actigraph;60s;No;1+min;Saint-Maurice et al., 2018
+63;Waist;Actigraph;60s;Yes;5+min;Saint-Maurice et al., 2018
+64;Waist;Actigraph;60s;Yes;10+min;Saint-Maurice et al., 2018
+65;Wrist;Axivity AX3;10s;No;10s-1min;Stamatakis et al., 2022
+66;Wrist;Axivity AX3;10s;No;10s-2min;Stamatakis et al., 2022
+67;Wrist;Axivity AX3;10s;No;2+min;Stamatakis et al., 2022
+68;Wrist;Axivity AX3;10s;No;10s-1min;Stamatakis et al., 2023
+69;Wrist;Axivity AX3;10s;No;10s-2min;Stamatakis et al., 2023
+70;Wrist;Axivity AX3;10s;No;2+min;Stamatakis et al., 2023
+71;Hip;Actigraph;60s;No;1+min;Strath et al., 2008
+72;Hip;Actigraph;60s;No;10+min;Strath et al., 2008
+73;Hip;Hookie AM 20;6s;No;30s-5min;Vasankari et al. 2017
+74;Hip;Hookie AM 20;6s;No;5+min;Vasankari et al. 2017
+75;Hip;Hookie AM 20;6s;No;10+min;Vasankari et al. 2017
+76;Hip;Hookie AM 20;6s;No;15+min;Vasankari et al. 2017
+77;Hip;Hookie AM 20;6s;No;30+min;Vasankari et al. 2017
+78;Hip;Hookie AM 20;6s;No;10-min;Vasankari et al. 2017
+79;Hip;Hookie AM 20;6s;No;15-min;Vasankari et al. 2017
+80;Hip;Hookie AM 20;6s;No;30-min;Vasankari et al. 2017
+81;Thigh;ActivPAL3 Micro;?;No;10+min;Verswijveren et al., 2022
+82;Waist;Actigraph;60s;No;1-10min;White et al., 2015
+83;Waist;Actigraph;60s;Yes;10+min;White et al., 2015
+84;Hip;Actigraph;60s;Yes;10+min;Wolff-Hugues et al., 2015

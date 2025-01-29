@@ -1,0 +1,95 @@
+"Column explanations										";;;;;;;;;;
+"StudyID: short study ID. We could have several rows by study (ie, if multiple bout duration tested). For example: XXXX										";;;;;;;;;;
+"Position: position of the device during the study. For example, ""Ankle"", ""Hip"", ""Wrist"", other…										";;;;;;;;;;
+"Device: device used in the study. For example, ""Fitbit"", ""Garmin"", ""Actigraph""…										";;;;;;;;;;
+"EpochDuration: epoch duration used in the study. 										";;;;;;;;;;
+"DropTime: drop time used. For example, ""Yes"" or ""No"".										";;;;;;;;;;
+"										";;;;;;;;;;
+"Pour l'affichage, afficher l'arbre avec les feuilles à la fin qui correspondent au nombre d'études dans ce cas et entre parenthèse les numéros de studyID (+ ajouter une biblio où les numéros des études correspondent). Le but est d'avoir plutôt le nombre d'étude que les études précises.										";;;;;;;;;;
+"										";;;;;;;;;;
+"										";;;;;;;;;;
+StudyID;Position;PositionDetails;Device;DeviceDetails;EpochDuration;DropTime;DropTimeDetails;BoutDuration;BoutDurationDetails;StudyDetails
+;wrist;dominant wrist;Axivity AX3;Axivity AX3 accelerometer;10s;No;;10s-2min;;Ahmadi et al., 2022
+;wrist;dominant wrist;Axivity AX3;Axivity AX3 accelerometer;10s;No;;10s-1min;;Ahmadi et al., 2023
+;wrist;dominant wrist;Axivity AX3;Axivity AX3 accelerometer;10s;No;;1-3min;;Ahmadi et al., 2023
+;wrist;dominant wrist;Axivity AX3;Axivity AX3 accelerometer;10s;No;;3-5min;;Ahmadi et al., 2023
+;wrist;dominant wrist;Axivity AX3;Axivity AX3 accelerometer;10s;No;;5-10min;;Ahmadi et al., 2023
+;wrist;dominant wrist;Axivity AX3;Axivity AX3 accelerometer;10s;No;;10+min;*only covariate;Ahmadi et al., 2023
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;32+s;;Ayabe et al., 2012
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;1+min;;Ayabe et al., 2012
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;3+min;;Ayabe et al., 2012
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;5+min;;Ayabe et al., 2012
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;10+min;;Ayabe et al., 2012
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;32+s;;Ayabe et al., 2013
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;1+min;;Ayabe et al., 2013
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;3+min;;Ayabe et al., 2013
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;5+min;;Ayabe et al., 2013
+;waist;left anterior midline of the thigh;Lifecorder-Ex;;4s;No;;10+min;;Ayabe et al., 2013
+;waist;;Actigraph;Actigraph GT3X+ and GT1M;30s;No;;30+s;;Cameron et al., 2017
+;waist;;Actigraph;Actigraph GT3X+ and GT1M;30s;Yes;"* ""allowing for an interruption of up to 2 minutes anywhere within the bout""";10+min;;Cameron et al., 2017
+;wrist;;Axivity AX3;;?;No;;1-5min;;Cassidy et al., 2018
+;wrist;;Axivity AX3;;?;No;;10+min;;Cassidy et al., 2018
+;waist;;Active style pro;Active style Pro HJA-350IT;60s;No;;1+min;;Chen et al., 2018
+;waist;;Active style pro;Active style Pro HJA-350IT;60s;Yes;"* ""with an allowance for up to 2 minutes below threshold"" ** only MVPA and VPA";10+min;;Chen et al., 2018
+;waist;;Active style pro;Active style Pro HJA-350IT;60s;No;;1-10min;;Chen et al., 2020
+;waist;;Active style pro;Active style Pro HJA-350IT;60s;Yes;"* ""with an allowance for up to 2 min out of 10 to drop below the MVPA intensity threshold""";10+min;;Chen et al., 2020
+;hip;over the right hip;Actical;;60s;No;;1+min;;Clarke & Janssen, 2014
+;hip;over the right hip;Actical;;60s;No;"* ""a bout continued until 80% was no longer above the cut-point""";10+min;;Clarke & Janssen, 2014
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;1+min;;De Winter et al., 2018
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;5+min;;De Winter et al., 2018
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;10+min;;De Winter et al., 2018
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;30+min;;De Winter et al., 2018
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;60+min;;De Winter et al., 2018
+;upper arm;worn on the right upper arm;SenseWear Pro2;;?;No;;?;;Di Blasio et al., 2014
+;upper arm;worn on the right upper arm;SenseWear Pro2;;?;No;;5+min;;Di Blasio et al., 2014
+;upper arm;worn on the right upper arm;SenseWear Pro2;;?;No;;10+min;;Di Blasio et al., 2014
+;hip;over the right hip;Actical;;60s;No;;1+min;;Diaz et al., 2019
+;hip;over the right hip;Actigraph;Actigraph GT3X/GT3X+;60s;No;;1+min;;Dos Santos et al., 2020
+;hip;over the right hip;Actigraph;Actigraph GT3X/GT3X+;60s;No;;10+min;;Dos Santos et al., 2020
+;hip;right hip or lower back;Actigraph;Actigraph GT3X+ or 7164 or GT1M;60s;No;;1+min;;Ekelund et al., 2019
+;hip;right hip;Actical;;60s;Yes;"* ""allowing for 1-2 minute drops below the threshold during each period of 10 or more minutes"" ** only MVPA";10+min;;Ekelund et al., 2019
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;1+min;;Fan et al., 2013
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;Yes;"* ""allowing for 1–2 minute interruptions within any 10-minute";10+min;;Fan et al., 2013
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;1+min;;Gay et al., 2016
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;10+min;;Gay et al., 2016
+;waist;;Actical;Actical model #198-0200-00;30s;No;;30+s;;Glazer et al., 2013
+;waist;;Actical;Actical model #198-0200-00;30s;Yes;"* ""allowing for a 1–2 minute interruption""";10+min;;Glazer et al., 2013
+;hip;over the right hip;Actigraph;Actigraph GT3X;60s;No;;1-10min;;Jefferis et al., 2016
+;hip;over the right hip;Actigraph;Actigraph GT3X;60s;No;;10+min;;Jefferis et al., 2016
+;hip;over the right hip;Actigraph;Actigraph GT3X;60s;No;;1-10min;;Jefferis et al., 2018
+;hip;over the right hip;Actigraph;Actigraph GT3X;60s;No;;10+min;;Jefferis et al., 2018
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;1+min;;Kheler et al., 2018
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;Yes;"* ""with two allowable consecutive minutes out of 10 min to drop below the MVPA intensity threshold into light intensity physical activity""";10+min;;Kheler et al., 2018
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;1+min;;Loprinzi et al., 2013
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;Yes;"* ""with allowance for interruptions of 1 or 2 minutes below the cut point""";10+min;;Loprinzi et al., 2013
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;1-10min;;Loprinzi, 2017
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;10+min;;Loprinzi, 2017
+;wrist;non-dominant wrist;GENEActiv;;60s;No;;1+min;;Mitchell et al., 2018
+;wrist;non-dominant wrist;GENEActiv;;60s;Yes;*only MVPA;10+min;;Mitchell et al., 2018
+;hip;over the right hip;Actigraph;;?;No;;15+s;;Rava et al., 2018
+;hip;over the right hip;Actigraph;;?;Yes;"* ""with allowance for interruptions of 1–2 min"" **only MVPA";10+min;;Rava et al., 2018
+;thigh;dominant thigh;GENEActiv;;10s;No;;?s-10min;;Ryan et al., 2019
+;thigh;dominant thigh;GENEActiv;;10s;No;;10+min;;Ryan et al., 2019
+;waist;;Actigraph;;60s;No;;1+min;;Saint-Maurice et al., 2018
+;waist;;Actigraph;;60s;Yes;"* ""allowed for 1min of activity counts <760cpm""";5+min;;Saint-Maurice et al., 2018
+;waist;;Actigraph;;60s;Yes;"** ""allowed for 2min of activity counts <760cpm""";10+min;;Saint-Maurice et al., 2018
+;wrist;dominant wrist;Axivity AX3;;10s;No;;10s-1min;;Stamatakis et al., 2022
+;wrist;dominant wrist;Axivity AX3;;10s;No;;10s-2min;;Stamatakis et al., 2022
+;wrist;dominant wrist;Axivity AX3;;10s;No;;2+min;*covariate;Stamatakis et al., 2022
+;wrist;dominant wrist;Axivity AX3;;10s;No;;10s-1min;;Stamatakis et al., 2023
+;wrist;dominant wrist;Axivity AX3;;10s;No;;10s-2min;;Stamatakis et al., 2023
+;wrist;dominant wrist;Axivity AX3;;10s;No;;2+min;*covariate;Stamatakis et al., 2023
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;1+min;;Strath et al., 2008
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;No;;10+min;;Strath et al., 2008
+;hip;over the right hip;Hookie AM 20;;6s;No;;30s-5min;;Vasankari et al. 2017
+;hip;over the right hip;Hookie AM 20;;6s;No;;5+min;;Vasankari et al. 2017
+;hip;over the right hip;Hookie AM 20;;6s;No;;10+min;;Vasankari et al. 2017
+;hip;over the right hip;Hookie AM 20;;6s;No;;15+min;;Vasankari et al. 2017
+;hip;over the right hip;Hookie AM 20;;6s;No;;30+min;;Vasankari et al. 2017
+;hip;over the right hip;Hookie AM 20;;6s;No;;10-min;;Vasankari et al. 2017
+;hip;over the right hip;Hookie AM 20;;6s;No;;15-min;;Vasankari et al. 2017
+;hip;over the right hip;Hookie AM 20;;6s;No;;30-min;;Vasankari et al. 2017
+;thigh;right thigh;activPAL3 Micro;;?;No;;10+min;;Verswijveren et al., 2022
+;waist;;Actigraph;Actigraph model 7164;60s;No;;1-10min;;White et al., 2015
+;waist;;Actigraph;Actigraph model 7164;60s;Yes;"* ""with allowance for one- or two-minute interruptions below the 1952 count threshold""";10+min;;White et al., 2015
+;hip;over the right hip;Actigraph;Actigraph model 7164;60s;Yes;"* ""allowing for 1 to 2 minutes below the 2020 cpm threshold""";10+min;;Wolff-Hugues et al., 2015

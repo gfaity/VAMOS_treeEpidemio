@@ -1,0 +1,310 @@
+---
+title: "TREE EPIDEMIO"
+format:
+  html:
+    self-contained: true
+---
+
+
+Le but est d'avoir un arbre / diagramme de classement qui soit clair et très beau idéal pour la publication dans un journal scientifique international indexé.
+Dans l'idée je vais avoir une trentaine d'article, et pour chacun ils ont plusieurs informaitons. 
+Par exemple device (actigraph, ou autre), position du device (hanche, poignet, cheville, autre), epoch duration (60s, 10s, 10min etc), drop time ou grace period, et potentiellement intensity (mais ça je vais probablement pas le mettre, ou alors en dernier juste de maniere informative).
+
+Le but est de faire avec des fonctions pour que je puisse changer facilement des éléments (par exemple changer l'odre des facteurs pour l'ordonation dans l'arbre, changer le type d'arbre etc).
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE
+)
+#.vsc.attach()
+rm(list = ls()) # clear all variable
+gc() #clear garbage to free memory
+```
+
+# Not Run
+Pour installer ggtree et Biostrings:
+
+### Biostrings
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Biostrings")
+
+### ggtree
+library(BiocManager)
+BiocManager::install("ggtree")
+
+```{r}
+#| echo: true
+#| code-fold: false
+
+# libraries
+library(dplyr) # manipulation de dataframes
+library(tidyr) # opération sur les dataframes
+library(ggplot2) # génération de graphique
+library(ape) # créer des objets arbres
+library(ggtree) # graphique arbres
+library(tidytree) # manipulation d'arbres data
+library(gtools) #for the function permutations
+library(flextable) #for creating beautiful table
+library(webshot2) #for exporting tables in image
+library(chromote) #for exporting tables in pdf
+library(ggalluvial) #for sankey diagram
+
+# WRK_PATH est le chemin vers le répertoire où se trouve notre projet et où se trouvent les fichiers mocap.
+# Vous devrez ajuster ce chemin en fonction de votre propre répertoire.
+WRK_PATH <- "C:/Users/germa/OneDrive/Documents/GitHub/VAMOS_treeEpidemio"
+
+# La fonction `setwd()` change le répertoire de travail pour celui que nous avons défini dans WRK_PATH.
+# Cela signifie que toute lecture/écriture de fichiers se fera à partir de ce répertoire.
+setwd(WRK_PATH)
+
+# On utilise la fonction `getwd()` pour afficher le répertoire de travail actuel et vérifier que le changement a bien eu lieu.
+cat("Répertoire de travail actuel :", getwd(), "\n")
+
+# Ensuite, nous définissons le chemin vers le dossier contenant les données à traiter et le chemin pour les résultats.
+# Ce dossier se trouve à l'intérieur de notre répertoire de travail.
+DAT_PATH <- file.path(WRK_PATH, "DAT")
+PRG_PATH <- file.path(WRK_PATH, "PRG")
+FCT_PATH <- file.path(PRG_PATH, "FCT") #dossier contenant les fonctions R
+RES_PATH <- file.path(WRK_PATH, "RES")
+
+# On affiche également le chemin vers les données pour s'assurer qu'il est correct.
+cat("Répertoire des données :", DAT_PATH, "\n")
+
+# Lire les fonctions R
+r_files <- list.files(FCT_PATH, pattern = "\\.R$", full.names = TRUE)
+# Charger chaque fichier .R sans afficher de sortie
+invisible(lapply(r_files, source))
+# Afficher le nombre de fichiers .R chargés
+cat(length(r_files), "fichiers .R chargés avec succès.\n")
+```
+
+# Étape 1 : Création d'un tableau fictif
+Voici un jeu de données fictif basé sur les informations fournies. Vous pouvez copier et coller ce tableau dans votre code R pour créer l'arbre.
+~
+```{r}
+#TODO: set this if chunk to TRUE if we want to simulate random data
+
+#we need to define this anyway
+thisDAT_PATH_simu <- file.path(DAT_PATH, "articlesByFeature_simu.csv")
+#and this is true data
+thisDAT_PATH_real <- file.path(DAT_PATH, "articlesByFeature_real.csv")
+
+if (FALSE){
+  
+  # Set things = specify possibilities in the right order
+  nArticles = 30 #10
+  myDevices = c("Other", "Garmin", "Fitbit", "Actigraph")
+  myPositions = c("Other", "Ankle", "Wrist", "Hip")
+  myEpochDurations = c("10s", "30s", "60s", "10min")
+  myDropTimes = c("None", "1s", "5s", "10s")
+  myBoutDurations = c("30+s", "1+min", "3+min", "10+min")
+  
+  # control randomness
+  set.seed(1112) #1111
+  
+  # Create dataframe
+  data_simu <- data.frame(
+    StudyID = paste0("Study_", 1:nArticles),
+    Device = sample(myDevices, nArticles, replace = TRUE),
+    Position = sample(myPositions, nArticles, replace = TRUE),
+    EpochDuration = sample(myEpochDurations, nArticles, replace = TRUE),
+    DropTime = sample(myDropTimes, nArticles, replace = TRUE)
+  )
+  
+  # inform user
+  #print(data_simu)
+  
+  # export this dataframe in a csv file for later use
+  write.csv2(data_simu, thisDAT_PATH_simu, row.names = FALSE, col.names = TRUE)
+}
+```
+
+# Étape 2 : Code pour générer l'arbre avec ggplot2
+Ce code crée un arbre hiérarchique avec des fonctions personnalisables pour ajuster l’ordre des facteurs ou le style de l’arbre.
+
+```{r}
+# HUMAN CHOICE
+doSimpleLeaves <- TRUE #TRUE #Set to FALSE to have full detailed in epoch and bout duration #CAUTION: FALSE is not compatible with doFillColor in getPlotTree function  #HUMAN CHOICE
+
+#######
+
+#IMPORT DATA
+
+# import data this dataframe in a csv file for later use
+#thisDAT_PATH <- file.path(DAT_PATH, "articlesByFeature.csv")
+thisDAT_PATH <- thisDAT_PATH_real #thisDAT_PATH_simu
+data <- read.csv2(thisDAT_PATH)
+
+
+# S'il y a une colonne "studyDetails" = à concatener avec StudyID
+# data$StudyID <- paste(data$StudyDetails, data$StudyID, sep = " - ") #old way
+data$StudyNb <- data$StudyID
+data <- data %>%
+  group_by(StudyDetails) %>%            # On regroupe par la colonne citation
+  mutate(numero = row_number()) %>% # On crée un compteur par groupe
+  ungroup() %>%                     # On "dégroupe" pour éviter d'impacter d'autres opérations
+  mutate(StudyID = paste0(StudyDetails, " - ", numero))
+data$numero = NULL
+#delete if not needed
+data$StudyDetails = NULL
+data$StudyNb = NULL
+
+# Avoid spaces
+data$StudyID <- gsub(" ", "_", data$StudyID) #to re-change after constructing tree
+# Avoid virgule
+data$StudyID <- gsub(",", "@", data$StudyID) #to re-change after constructing tree
+
+###
+
+# Group Hip and Waist
+data$Position[which(data$Position=="Hip" | data$Position=="Waist")] <- "Hip / Waist"
+
+# Change some names (device)
+data$Device[which(data$Device=="Axivity AX3")] <- "Axivity"
+data$Device[which(data$Device=="Lifecorder-Ex")] <- "Lifecorder"
+data$Device[which(data$Device=="Hookie AM 20")] <- "Hookie"
+data$Device[which(data$Device=="ActivPAL3 Micro")] <- "ActivPAL"
+data$Device[which(data$Device=="SenseWear Pro2")] <- "SenseWear"
+data$Device[which(data$Device=="Active style pro")] <- "Active style"
+
+if (doSimpleLeaves){
+  # Group by min bout durations
+  #groups = "10-32s", "1min", "2-5min", "10-15min", "30-60min", "?"
+  data$BoutDuration[which(data$BoutDuration %in% c("10s-1min", "10s-2min", "30s-5min", "15+s", "30+s", "32+s", "?s-10min", "10-min", "15-min", "30-min"))] <- "10-32s"
+  data$BoutDuration[which(data$BoutDuration %in% c("1-3min", "1-5min", "1-10min", "1+min"))] <- "1min"
+  data$BoutDuration[which(data$BoutDuration %in% c("3-5min", "5-10min", "2+min", "3+min", "5+min"))] <- "2-5min"
+  data$BoutDuration[which(data$BoutDuration %in% c("10+min"))] <- "10min"
+  data$BoutDuration[which(data$BoutDuration %in% c("15+min", "30+min", "60+min"))] <- "15-60min"
+  #TODO: à vérifier dans l'article mais normalement ok
+  # "?s-10min", "10-min", "15-min", "30-min"
+  
+  # Group by epoch duration
+  #groups = "4-6s", "10s", "30s", "60s", "?"
+  data$EpochDuration[which(data$EpochDuration %in% c("4s","6s"))] <- "4-6s"
+}
+
+###
+
+# Set things = specify possibilities in the right order
+myStudyIDs = rev(sort(data$StudyID))
+myDevices = rev(sort(unique(data$Device)))
+myDropTimes = rev(unique(data$DropTime))
+myPositions = rev(c("Wrist", "Upper arm", "Hip / Waist", "Thigh")) #sort(unique(data$Position))
+
+if (doSimpleLeaves){
+  myEpochDurations = rev(c("4-6s", "10s", "30s", "60s", "?"))
+  myBoutDurations = rev(c("10-32s", "1min", "2-5min", "10min", "15-60min", "?"))
+} else {
+  myEpochDurations = rev(c("4s","6s","10s","30s","60s","?")) #unique(data$EpochDuration)
+  myBoutDurations = rev(c("1+epoch","10s-1min","10s-2min","30s-5min","1-3min","1-5min","1-10min","3-5min","5-10min","?s-10min","15+s","30+s","32+s","1+min","2+min","3+min","5+min","10+min","15+min","30+min","60+min","10-min","15-min","30-min", "?")) #unique(data$BoutDuration)
+}
+
+###
+
+# Reordonnez chaque variable dans l'ordre spécifié
+data <- data %>%
+  mutate(
+    StudyID = factor(StudyID, levels=myStudyIDs),
+    Device = factor(Device, levels = myDevices), # Ordre désiré
+    Position = factor(Position, levels = myPositions),  
+    EpochDuration = factor(EpochDuration, levels = myEpochDurations),
+    DropTime = factor(DropTime, levels = myDropTimes),
+    BoutDuration = factor(BoutDuration, levels = myBoutDurations)
+  )
+
+#############
+
+whichWay = 2 #1 = manual, #2 = automatic (all or selected permutations)
+savePlot = TRUE #TRUE or FALSE to save plot in PNG  #HUMAN CHOICE
+
+## WAY 1: on sait ce que l'on veut
+
+if (whichWay==1){
+  # Expliquer ce qu'on veut
+  variable_order = c("Position", "Device", "EpochDuration", "DropTime", "BoutDuration", "StudyID")
+  #variable_order = c("Position", "Device", "DropTime", "EpochDuration", "StudyID")
+  #variable_order = c("Position", "Device", "DropTime", "StudyID")
+  #variable_order = c("Position", "Device", "StudyID")
+
+  pathSavePlot = file.path(RES_PATH, "Arbre_Descriptif_Publication.png")
+  plotTitle = "Classification of Studies by Method"
+  # Get tree, plot and save it
+  #   it is simple so we can loop it easily to change variable_order or typeOfPlot
+  createSavePlotTree(data, variable_order, savePlot, pathSavePlot, plotTitle)
+
+} else if (whichWay==2){
+  
+  doOnlySelectedPermutations <- TRUE
+  if(doOnlySelectedPermutations){
+    # Liste des permutations selectionnées
+    # don't put StudyID at the end because we do it after (in the loop)
+    selected_permutations <- list(
+      c("Position", "Device", "EpochDuration", "DropTime", "BoutDuration"),
+      c("Device", "Position", "EpochDuration", "DropTime", "BoutDuration"),
+      c("Position", "EpochDuration", "DropTime", "BoutDuration", "Device")
+    )
+    # Convertir la liste en une matrice
+    permutations <- do.call(rbind, selected_permutations)
+    
+  } else {
+    # Variables à permuter (sans 'StudyID')
+    variables_to_permute <- c("Position", "Device", "DropTime", "EpochDuration", "BoutDuration")
+  
+    # Générer toutes les permutations possibles
+    permutations <- permutations(n = length(variables_to_permute),
+                                r = length(variables_to_permute),
+                                v = variables_to_permute)
+  }
+
+  # Boucler sur chaque permutation
+  for (i in 1:nrow(permutations)) {
+    # Obtenir la permutation courante
+    perm <- permutations[i, ]
+    
+    # Construire variable_order en ajoutant 'StudyID' à la fin
+    variable_order <- c(perm, "StudyID")
+    
+    # Construire une chaîne représentant l'ordre des variables
+    variable_order_str <- paste(variable_order, collapse = "_")
+        
+    # Construire le nom du fichier de sortie
+    file_name <- paste0("Arbre_Descriptif_", variable_order_str, ".png")
+    
+    # Chemin complet du fichier de sortie
+    output_folder = file.path(RES_PATH, "allPermutations")
+    dir.create(output_folder, recursive = TRUE)
+    pathSavePlot <- file.path(output_folder, file_name)
+    
+    # Titre du graphique (optionnel)
+    #plotTitle <- paste("Classification of Studies by", paste(perm, collapse = ", "))
+    plotTitle <- "Classification of Studies by Method"
+    
+    # Générer et sauvegarder le plot
+    createSavePlotTree(data, variable_order, savePlot = TRUE, pathSavePlot, plotTitle)
+    
+    # Informer de la progression
+    cat("Plot enregistré pour l'ordre :", variable_order_str, "\n")
+  }
+}
+```
+
+```{r}
+# Sankey diagram
+
+# Par exemple, diagramme Sankey sur 
+#   EpochDuration -> DropTime -> BoutDuration
+
+pathSankey <- file.path(RES_PATH, "Sankey_Epoch-Drop-Bout.png")
+mySankey <- createSaveSankey_3var(
+  data        = data,
+  varList     = c("EpochDuration","DropTime","BoutDuration"),
+  pathSavePlot= pathSankey,
+  plotTitle   = "Sankey Diagram: Epoch -> DropTime -> BoutDuration",
+  doSavePlot  = TRUE
+)
+# Le plot ggplot2 est renvoyé : mySankey
+print(mySankey)
+```
+
