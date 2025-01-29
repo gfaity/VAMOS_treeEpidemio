@@ -1,7 +1,7 @@
 createSavePlotTree <- function (data, variable_order, savePlot, pathSavePlot, plotTitle){
   
   # Pour la v2 = 1 seule feuille contenant toutes les études (du dernier embranchement)
-  only1leave = TRUE #FALSE #TRUE #HUMAN CHOICE
+  only1leave = FALSE #FALSE #TRUE #HUMAN CHOICE
   if (only1leave){
     #Create interaction so that 1 level of "interaction" will be 1 leaf (and could contain 1 or multiple studies) 
     data$interact <- interaction(data$Position, data$Device, data$EpochDuration, data$DropTime, data$BoutDuration, sep="+")

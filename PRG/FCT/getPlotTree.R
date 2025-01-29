@@ -9,6 +9,9 @@ getPlotTree <- function(tree, variable_labels, plotTitle, only1leave){
   if ("EpochDuration"%in%variable_labels$label) {
     variable_labels$label[variable_labels$label=="EpochDuration"] <- "Epoch Duration"
   }
+  if ("BoutDuration"%in%variable_labels$label) {
+    variable_labels$label[variable_labels$label=="BoutDuration"] <- "Bout Duration"
+  }
   
   # =============== 2) Définir toutes tes palettes  ===============
   
