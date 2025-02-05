@@ -29,8 +29,22 @@ createSaveSankeyAllVars <- function(
   # -- Inverser l'ordre des levels pour chaque variable
   #    (Ex: si DropTime = c("Yes","No"), on la renverse)
   #    ATTENTION : si un variable n'est pas factor, on saute
-  for (v in varList) {
+  # for (v in varList) {
+  #   if (is.factor(data[[v]])) {
+  #     data[[v]] <- fct_rev(data[[v]])
+  #   }
+  # }
+  # Pour chaque variable, si c'est un facteur, ajouter un préfixe invisible 
+  # afin de rendre chaque niveau unique même si l'affichage reste identique.
+  # On ajoute, par exemple, i copies du caractère espace de largeur zéro (\u200B)
+  for (i in seq_along(varList)) {
+    v <- varList[i]
     if (is.factor(data[[v]])) {
+      current_levels <- levels(data[[v]])
+      # On ajoute i copies du caractère invisible devant chaque niveau
+      new_levels <- paste0(strrep("\u200B", i), current_levels)
+      levels(data[[v]]) <- new_levels
+      # On inverse ensuite l'ordre des niveaux, comme dans votre code original
       data[[v]] <- fct_rev(data[[v]])
     }
   }
@@ -59,6 +73,7 @@ createSaveSankeyAllVars <- function(
   axisLabels[axisLabels == "EpochDuration"] <- "Epoch Duration"
   axisLabels[axisLabels == "DropTime"]      <- "Drop Time"
   axisLabels[axisLabels == "BoutDuration"]  <- "Bout Duration"
+  axisLabels[axisLabels == "StartYear"]  <- "Start Year"
   
   # 5) Créer le ggplot
   p <- ggplot(dfSankey, aesthetic) +
