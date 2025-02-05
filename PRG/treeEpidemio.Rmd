@@ -199,10 +199,10 @@ if (doSimpleLeaves){
 
 # Set things = specify possibilities in the right order
 myStudyIDs = rev(sort(data$StudyID))
-myDevices = rev(sort(unique(data$Device)))
+myDevices = rev(c("Actical","Actigraph", "Axivity", "GENEActiv","Hookie","Active style","ActivPAL","Lifecorder","SenseWear")) #sort devices in the order of apparition along time #rev(sort(unique(data$Device)))
 myDropTimes = rev(unique(data$DropTime))
 myPositions = rev(c("Wrist", "Upper arm", "Hip / Waist", "Thigh")) #sort(unique(data$Position))
-myStartYear = rev(sort(unique(data$StartYear)))
+myStartYear = rev(c("2000-2004","2005-2009","2010-2014","2015-2019","?")) #rev(sort(unique(data$StartYear)))
 
 if (doSimpleLeaves){
   myEpochDurations = rev(c("4-6s", "10s", "30s", "60s", "?"))
@@ -267,6 +267,7 @@ if (whichWay==1){
         c("Position", "Device", "StartYear", "EpochDuration", "DropTime", "BoutDuration"),
         c("Position", "StartYear", "Device", "EpochDuration", "DropTime", "BoutDuration"),
         c("StartYear", "Device", "Position", "EpochDuration", "DropTime", "BoutDuration"),
+        c("Device", "StartYear", "Position", "EpochDuration", "DropTime", "BoutDuration"),
         c("Position", "EpochDuration", "DropTime", "BoutDuration", "Device", "StartYear")
       )
     } else {
