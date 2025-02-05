@@ -12,6 +12,9 @@ getPlotTree <- function(tree, variable_labels, plotTitle, only1leave){
   if ("BoutDuration"%in%variable_labels$label) {
     variable_labels$label[variable_labels$label=="BoutDuration"] <- "Bout Duration"
   }
+  if ("StartYear"%in%variable_labels$label) {
+    variable_labels$label[variable_labels$label=="StartYear"] <- "Start Year"
+  }
   
   # =============== 2) Définir toutes tes palettes  ===============
   
@@ -57,13 +60,22 @@ getPlotTree <- function(tree, variable_labels, plotTitle, only1leave){
     "Other"       = "#cccccc"
   )
   
+  startYearColors <- c(
+    "2015-2019" = "#006d2c",  # Vert très foncé (période la plus récente)
+    "2010-2014" = "#31a354",  # Vert foncé
+    "2005-2009" = "#74c476",  # Vert moyen
+    "2000-2004" = "#bae4b3",  # Vert clair (période plus ancienne)
+    "?"         = "#cccccc"   # Gris pour l’incertitude
+  )
+  
   # Fusion de toutes les couleurs (un seul vecteur nommé)
   myColorMapping <- c(
     dropTimeColors,
     boutDurationColors,
     epochColors,
     deviceColors,
-    positionColors
+    positionColors,
+    startYearColors
   )
   
   # =============== 3) Plot standard ggtree ===============

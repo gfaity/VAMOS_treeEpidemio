@@ -156,6 +156,9 @@ data$StudyID <- gsub(" ", "_", data$StudyID) #to re-change after constructing tr
 # Avoid virgule
 data$StudyID <- gsub(",", "@", data$StudyID) #to re-change after constructing tree
 
+# Change name of column
+colnames(data)[which(colnames(data)=="PhysicalActivityAssessment_StartYear")] <- "StartYear"
+
 ###
 
 # Group Hip and Waist
@@ -183,6 +186,13 @@ if (doSimpleLeaves){
   # Group by epoch duration
   #groups = "4-6s", "10s", "30s", "60s", "?"
   data$EpochDuration[which(data$EpochDuration %in% c("4s","6s"))] <- "4-6s"
+  
+  # Group by starting year of Physical Activity Assessment
+  data$StartYear[which(data$StartYear %in% c("2000","2001","2002","2003","2004"))] <- "2000-2004"
+  data$StartYear[which(data$StartYear %in% c("2005","2006","2007","2008","2009"))] <- "2005-2009"
+  data$StartYear[which(data$StartYear %in% c("2010","2011","2012","2013","2014"))] <- "2010-2014"
+  data$StartYear[which(data$StartYear %in% c("2015","2016","2017","2018","2019"))] <- "2015-2019"
+  data$StartYear[which(data$StartYear %in% c("2020","2021","2022","2023","2024"))] <- "2020-2024"
 }
 
 ###
@@ -192,6 +202,7 @@ myStudyIDs = rev(sort(data$StudyID))
 myDevices = rev(sort(unique(data$Device)))
 myDropTimes = rev(unique(data$DropTime))
 myPositions = rev(c("Wrist", "Upper arm", "Hip / Waist", "Thigh")) #sort(unique(data$Position))
+myStartYear = rev(sort(unique(data$StartYear)))
 
 if (doSimpleLeaves){
   myEpochDurations = rev(c("4-6s", "10s", "30s", "60s", "?"))
@@ -211,19 +222,29 @@ data <- data %>%
     Position = factor(Position, levels = myPositions),  
     EpochDuration = factor(EpochDuration, levels = myEpochDurations),
     DropTime = factor(DropTime, levels = myDropTimes),
-    BoutDuration = factor(BoutDuration, levels = myBoutDurations)
+    BoutDuration = factor(BoutDuration, levels = myBoutDurations),
+    StartYear = factor(StartYear, levels = myStartYear)
   )
 
 #############
 
-whichWay = 2 #1 = manual, #2 = automatic (all or selected permutations)
+whichWay = 2 #1 = manual, #2 = automatic (all or selected permutations) #HUMAN CHOICE
 savePlot = TRUE #TRUE or FALSE to save plot in PNG  #HUMAN CHOICE
+addStartYear = TRUE #FALSE #decide if we should add start year to analysed factors #HUMAN CHOICE
 
 ## WAY 1: on sait ce que l'on veut
 
 if (whichWay==1){
-  # Expliquer ce qu'on veut
-  variable_order = c("Position", "Device", "EpochDuration", "DropTime", "BoutDuration", "StudyID")
+  
+  if(addStartYear){
+    #Add starting time of assessment
+    variable_order = c("Position", "Device", "StartYear", "EpochDuration", "DropTime", "BoutDuration", "StudyID")
+  } else {
+    # This is good (before adding StartYear)
+    variable_order = c("Position", "Device", "EpochDuration", "DropTime", "BoutDuration", "StudyID") #good if not StartYear
+  }
+  
+  #Old
   #variable_order = c("Position", "Device", "DropTime", "EpochDuration", "StudyID")
   #variable_order = c("Position", "Device", "DropTime", "StudyID")
   #variable_order = c("Position", "Device", "StudyID")
@@ -240,11 +261,21 @@ if (whichWay==1){
   if(doOnlySelectedPermutations){
     # Liste des permutations selectionnées
     # don't put StudyID at the end because we do it after (in the loop)
-    selected_permutations <- list(
-      c("Position", "Device", "EpochDuration", "DropTime", "BoutDuration"),
-      c("Device", "Position", "EpochDuration", "DropTime", "BoutDuration"),
-      c("Position", "EpochDuration", "DropTime", "BoutDuration", "Device")
-    )
+    
+    if (addStartYear){
+      selected_permutations <- list(
+        c("Position", "Device", "StartYear", "EpochDuration", "DropTime", "BoutDuration"),
+        c("Position", "StartYear", "Device", "EpochDuration", "DropTime", "BoutDuration"),
+        c("StartYear", "Device", "Position", "EpochDuration", "DropTime", "BoutDuration"),
+        c("Position", "EpochDuration", "DropTime", "BoutDuration", "Device", "StartYear")
+      )
+    } else {
+      selected_permutations <- list(
+        c("Position", "Device", "EpochDuration", "DropTime", "BoutDuration"),
+        c("Device", "Position", "EpochDuration", "DropTime", "BoutDuration"),
+        c("Position", "EpochDuration", "DropTime", "BoutDuration", "Device")
+      )
+    }
     # Convertir la liste en une matrice
     permutations <- do.call(rbind, selected_permutations)
     
