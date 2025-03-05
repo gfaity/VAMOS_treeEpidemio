@@ -11,6 +11,27 @@ createSaveSankey_3var <- function(
   library(forcats)      # pour fct_rev
   library(RColorBrewer) # pour palette "Accent"
   
+  ######################################################
+  # OPTIONNEL: Weighting of width for Sankey diagram by nb of combinaison per study
+  weightingRibbonWidthPerStudy = TRUE
+  if(weightingRibbonWidthPerStudy){
+    # Récupérer l'info de quelle article vient chaque ligne
+    data <- data %>%
+      mutate(StudyDetails = str_replace(StudyID, "_-_[0-9]+$", ""))
+    
+    #nbCombiMax = max(table(data$StudyDetails)) #pour avoir le nb de combinaison max par article (inutile au final)
+    
+    # Calcul du nombre d'occurrences pour chaque StudyDetails
+    data <- data %>%
+      group_by(StudyDetails) %>%
+      mutate(RibbonWidth = 1 / n()) %>%
+      ungroup()
+    
+    #Remove useless columns
+    data$StudyDetails <- NULL
+  }
+  ######################################################
+  
   # 1) Vérifier l'existence et la taille de varList
   if (!all(varList %in% names(data))) {
     stop("Certaines variables de varList ne sont pas présentes dans le dataframe.")
@@ -31,14 +52,26 @@ createSaveSankey_3var <- function(
     }
   }
   
-  # 4) Agréger: calculer le nombre d'articles (Freq) pour chaque combinaison
-  dfSankey <- data %>%
-    group_by(across(all_of(varList))) %>%
-    summarise(Freq = n(), .groups = "drop")
+  # 4) Calcul de la largeur des rubans
+  if(weightingRibbonWidthPerStudy){
+    # Method B: Calcul des largeurs pondérées par article au lieu de la simple fréquence
+    dfSankey <- data %>%
+      group_by(across(all_of(varList))) %>%
+      summarise(Freq = sum(RibbonWidth), .groups = "drop")  # Somme des largeurs de ruban
+    #Remove useless columns
+    data$RibbonWidth <- NULL
+  } else {
+    # Method A: Calculer la fréquence de chaque combinaison
+    dfSankey <- data %>%
+      group_by(across(all_of(varList))) %>%
+      summarise(Freq = n(), .groups = "drop")
+  }
   
-  # 5) Créer la palette manuelle “Accent” + vert foncé
-  myColors <- brewer.pal(n = 8, name = "Accent")  # 8 couleurs de base
-  myColors <- c(myColors, "#006400")              # 9e couleur = vert foncé
+  # 5) Colorblind friendly 12-colors palette (rcartocolor)
+  myColors <- c("#CC6677", "#88CCEE", "#DDCC77", "#117733", "#332288", "#AA4499", "#44AA99", "#999933", "#882255", "#661100", "#6699CC", "#888888")
+  # Convertir en teintes pastel (augmenter la luminance et réduire la saturation)
+  # library(colorspace)
+  # myColors <- lighten(desaturate(myColors, amount = 0.2), amount = 0.1)
   
   # 6) Préparer les noms d'axes : "EpochDuration" => "Epoch Duration", etc.
   axisLabels <- varList

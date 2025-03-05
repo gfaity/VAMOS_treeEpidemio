@@ -1,0 +1,44 @@
+R version 4.2.2 (2022-10-31 ucrt) -- "Innocent and Trusting"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Workspace loaded from ~/GitHub/VAMOS_treeEpidemio/PRG/.RData]
+
+Répertoire de travail actuel : C:/Users/germa/OneDrive/Documents/GitHub/VAMOS_treeEpidemio 
+
+Répertoire des données : C:/Users/germa/OneDrive/Documents/GitHub/VAMOS_treeEpidemio/DAT 
+
+9 fichiers .R chargés avec succès.
+
+ Nombre d'études inclues : 48 
+
+Nombre de combinaisons uniques (with Study) (avant aggregation) : 113 
+
+Nombre de combinaisons uniques (avant aggregation - sans compter l'année) : 68 
+
+Nombre de combinaisons uniques (with Study) (après aggregation) : 113 
+
+Nombre de combinaisons uniques (après aggregation - sans compter l'année) : 53 
+
+ Plot enregistré pour l'ordre : Position_Device_StartYear_EpochDuration_DropTime_BoutDuration_StudyID 
+
+ Plot enregistré pour l'ordre : Position_StartYear_Device_EpochDuration_DropTime_BoutDuration_StudyID 
+
+ Plot enregistré pour l'ordre : StartYear_Device_Position_EpochDuration_DropTime_BoutDuration_StudyID 
+
+ Plot enregistré pour l'ordre : Device_StartYear_Position_EpochDuration_DropTime_BoutDuration_StudyID 
+
+ Plot enregistré pour l'ordre : Position_EpochDuration_DropTime_BoutDuration_Device_StartYear_StudyID 
+

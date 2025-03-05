@@ -20,36 +20,65 @@ getPlotTree <- function(tree, variable_labels, plotTitle, only1leave){
   
   dropTimeColors <- c(
     "No"   = "#E74C3C",
-    "Yes"  = "#2ECC71"
+    "Yes"  = "#2ECC71",
+    "Both" = "#888888" #gris foncé pour multiple
   )
   
   boutDurationColors <- c(
-    "10-32s"    = "#c6dbef", # plus clair
-    "1min"      = "#9ecae1",
-    "2-5min"    = "#6baed6",
-    "10min"     = "#3182bd",
-    "15-60min"  = "#08519c", # plus foncé
+    "1s"        = "#c6dbef", # plus clair
+    "10-32s"    = "#9ecae1",
+    "1min"      = "#6baed6",
+    "2-5min"    = "#3182bd",
+    "10min"     = "#08519c",
+    "15-60min"  = "#08306b", # plus foncé
     "?"         = "#cccccc"  # gris pour l’incertitude
   )
   
   epochColors <- c(
-    "4-6s" = "#dadaeb", # plus clair
-    "10s"  = "#bcbddc", # plus foncé
-    "30s"  = "#9e9ac8",
-    "60s"  = "#6a51a3",
+    "1s\u2063" = "#dadaeb", # plus clair #ajout d'un caractere invisible (espace de largeur zero) pour évité d'être confondu avec 1s de BoutDuration
+    "4-6s" = "#bcbddc", 
+    "10s"  = "#9e9ac8",
+    "30s"  = "#6a51a3",
+    "60s"  = "#4a1486", # plus foncé
     "?"    = "#cccccc"  # gris pour l’incertitude
   )
   
+  #old version: les couleurs ne correspondent pas au sankey diagram final
+  # deviceColors <- c(
+  #   "SenseWear"    = "#1b9e77",  # Vert foncé
+  #   "Lifecorder"   = "#d95f02",  # Orange
+  #   "Hookie"       = "#7570b3",  # Bleu violet
+  #   "GENEActiv"    = "#e7298a",  # Rose
+  #   "Axivity"      = "#66a61e",  # Vert clair
+  #   "ActivPAL"     = "#e6ab02",  # Jaune moutarde
+  #   "Activestyle"  = "#a6761d",  # Brun foncé #space
+  #   "Actigraph"    = "#666666",  # Gris neutre
+  #   "Actical"      = "#1f78b4",  # Bleu profond
+  #   "Actiheart"    = "#800020",  # Rouge bordeaux
+  #   "Vitamove"     = "#008080"   #Cyan profond
+  # )
+  
+  #new version: pour que les couleurs correspondent au sankey diagram
+  # Colorblind friendly 12-colors palette (rcartocolor, SAFE)
+  myColors <- c("#CC6677", "#88CCEE", "#DDCC77", "#117733", "#332288", "#AA4499", "#44AA99", "#999933", "#882255", "#661100", "#6699CC", "#888888")
+  # Convertir en teintes pastel (augmenter la luminance et réduire la saturation)
+  # library(colorspace)
+  # myColors <- lighten(desaturate(myColors, amount = 0.2), amount = 0.1)
+  #scales::show_col(myColors) # Vérifier la palette visuellement
+  
   deviceColors <- c(
-    "SenseWear"    = "#1b9e77",  # Vert foncé
-    "Lifecorder"   = "#d95f02",  # Orange
-    "Hookie"       = "#7570b3",  # Bleu violet
-    "GENEActiv"    = "#e7298a",  # Rose
-    "Axivity"      = "#66a61e",  # Vert clair
-    "ActivPAL"     = "#e6ab02",  # Jaune moutarde
-    "Activestyle" = "#a6761d",  # Brun foncé #space
-    "Actigraph"    = "#666666",  # Gris neutre
-    "Actical"      = "#1f78b4"   # Bleu profond
+    "Actical"      = myColors[1],
+    "Actigraph"    = myColors[2],
+    "Actiheart"    = myColors[3], 
+    "Axivity"      = myColors[4],
+    "GENEActiv"    = myColors[5],  
+    "Hookie"       = myColors[6],  
+    "Vitamove"     = myColors[7],
+    "Activestyle"  = myColors[8],  
+    "ActivPAL"     = myColors[9],  
+    "Lifecorder"   = myColors[10],  
+    "SenseWear"    = myColors[11],
+    "Multiple"     = myColors[12] #gris foncé pour multiple
   )
   
   positionColors <- c(
@@ -57,11 +86,14 @@ getPlotTree <- function(tree, variable_labels, plotTitle, only1leave){
     "Hip/Waist" = "#80b1d3", #space
     "Thigh"       = "#fdb462",
     "Upperarm"   = "#faaab3", #space
-    "Other"       = "#cccccc"
+    "Chest"      = "#b2182b", 
+    "Other"       = "#cccccc",
+    "Multiple"    = "#888888" #gris foncé pour multiple
   )
   
   startYearColors <- c(
-    "2015-2019" = "#006d2c",  # Vert très foncé (période la plus récente)
+    "2020-2024" = "#00441b",  # Vert très très foncé (période la plus récente)
+    "2015-2019" = "#006d2c",  # Vert très foncé 
     "2010-2014" = "#31a354",  # Vert foncé
     "2005-2009" = "#74c476",  # Vert moyen
     "2000-2004" = "#bae4b3",  # Vert clair (période plus ancienne)

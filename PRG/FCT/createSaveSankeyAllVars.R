@@ -9,11 +9,32 @@ createSaveSankeyAllVars <- function(
   library(dplyr)
   library(forcats)  # Pour forcats::fct_rev
   
-  # Obtenir les couleurs de la palette Accent (en ajouter une car 9 Device et seulement 8 couleurs dans palette)
-  library(RColorBrewer)
-  myColors <- brewer.pal(n = 8, name = "Accent")  # Palette existante
-  myColors <- c(myColors, "#006400")  # Ajout d'une 9e couleur (rose foncé ici, à modifier si besoin)
+  # Colorblind friendly 12-colors palette (rcartocolor)
+  myColors <- c("#CC6677", "#88CCEE", "#DDCC77", "#117733", "#332288", "#AA4499", "#44AA99", "#999933", "#882255", "#661100", "#6699CC", "#888888")
+  # Convertir en teintes pastel (augmenter la luminance et réduire la saturation)
+  # library(colorspace)
+  # myColors <- lighten(desaturate(myColors, amount = 0.2), amount = 0.1)
   
+  ######################################################
+  # OPTIONNEL: Weighting of width for Sankey diagram by nb of combinaison per study
+  weightingRibbonWidthPerStudy = TRUE
+  if(weightingRibbonWidthPerStudy){
+    # Récupérer l'info de quelle article vient chaque ligne
+    data <- data %>%
+      mutate(StudyDetails = str_replace(StudyID, "_-_[0-9]+$", ""))
+    
+    #nbCombiMax = max(table(data$StudyDetails)) #pour avoir le nb de combinaison max par article (inutile au final)
+    
+    # Calcul du nombre d'occurrences pour chaque StudyDetails
+    data <- data %>%
+      group_by(StudyDetails) %>%
+      mutate(RibbonWidth = 1 / n()) %>%
+      ungroup()
+    
+    #Remove useless columns
+    data$StudyDetails <- NULL
+  }
+  ######################################################
   
   # 1) Exclure StudyID
   varList <- setdiff(variable_order, "StudyID")
@@ -49,10 +70,20 @@ createSaveSankeyAllVars <- function(
     }
   }
   
-  # 3) Calculer la fréquence de chaque combinaison
-  dfSankey <- data %>%
-    group_by(across(all_of(varList))) %>%
-    summarise(Freq = n(), .groups = "drop")
+  #3) Calcul de la largeur des rubans
+  if(weightingRibbonWidthPerStudy){
+    # Method B: Calcul des largeurs pondérées par article au lieu de la simple fréquence
+    dfSankey <- data %>%
+      group_by(across(all_of(varList))) %>%
+      summarise(Freq = sum(RibbonWidth), .groups = "drop")  # Somme des largeurs de ruban
+    #Remove useless columns
+    data$RibbonWidth <- NULL
+  } else {
+    # Method A: Calculer la fréquence de chaque combinaison
+    dfSankey <- data %>%
+      group_by(across(all_of(varList))) %>%
+      summarise(Freq = n(), .groups = "drop")
+  }
   
   # 4) Construire le mapping pour ggalluvial dynamiquement
   axisMapping <- setNames(

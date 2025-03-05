@@ -4,82 +4,111 @@ StudyID;Position;Device;EpochDuration;DropTime;BoutDuration;StudyDetails;Physica
 3;Wrist;Axivity AX3;10s;No;1-3min;Ahmadi et al., 2023;2013
 4;Wrist;Axivity AX3;10s;No;3-5min;Ahmadi et al., 2023;2013
 5;Wrist;Axivity AX3;10s;No;5-10min;Ahmadi et al., 2023;2013
-6;Wrist;Axivity AX3;10s;No;10+min;Ahmadi et al., 2023;2013
-7;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2012;?
-8;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2012;?
-9;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2012;?
-10;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2012;?
-11;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2012;?
-12;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2013;?
-13;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2013;?
-14;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2013;?
-15;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2013;?
-16;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2013;?
-17;Waist;Actigraph;30s;No;30+s;Cameron et al., 2017;2010
-18;Waist;Actigraph;30s;Yes;10+min;Cameron et al., 2017;2010
-19;Wrist;Axivity AX3;?;No;1-5min;Cassidy et al., 2018;2013
-20;Wrist;Axivity AX3;?;No;10+min;Cassidy et al., 2018;2013
-21;Waist;Active style pro;60s;No;1+min;Chen et al., 2018;2017
-22;Waist;Active style pro;60s;Yes;10+min;Chen et al., 2018;2017
-23;Waist;Active style pro;60s;No;1-10min;Chen et al., 2020;2017
-24;Waist;Active style pro;60s;Yes;10+min;Chen et al., 2020;2017
-25;Hip;Actical;60s;No;1+min;Clarke & Janssen, 2014;2007
-26;Hip;Actical;60s;No;10+min;Clarke & Janssen, 2014;2007
-27;Hip;Actigraph;60s;No;1+min;De Winter et al., 2018;2003
-28;Hip;Actigraph;60s;No;5+min;De Winter et al., 2018;2003
-29;Hip;Actigraph;60s;No;10+min;De Winter et al., 2018;2003
-30;Hip;Actigraph;60s;No;30+min;De Winter et al., 2018;2003
-31;Hip;Actigraph;60s;No;60+min;De Winter et al., 2018;2003
-32;Upper arm;SenseWear Pro2;?;No;?;Di Blasio et al., 2014;?
-33;Upper arm;SenseWear Pro2;?;No;5+min;Di Blasio et al., 2014;?
-34;Upper arm;SenseWear Pro2;?;No;10+min;Di Blasio et al., 2014;?
-35;Hip;Actical;60s;No;1+min;Diaz et al., 2019;2009
-36;Hip;Actigraph;60s;No;1+min;Dos Santos et al., 2020;2013
-37;Hip;Actigraph;60s;No;10+min;Dos Santos et al., 2020;2013
-38;Hip;Actigraph;60s;No;1+min;Ekelund et al., 2019;2001
-39;Hip;Actical;60s;Yes;10+min;Ekelund et al., 2019;2003
-40;Hip;Actigraph;60s;No;1+min;Fan et al., 2013;2003
-41;Hip;Actigraph;60s;Yes;10+min;Fan et al., 2013;2003
-42;Hip;Actigraph;60s;No;1+min;Gay et al., 2016;2003
-43;Hip;Actigraph;60s;No;10+min;Gay et al., 2016;2003
-44;Waist;Actical;30s;No;30+s;Glazer et al., 2013;2008
-45;Waist;Actical;30s;Yes;10+min;Glazer et al., 2013;2008
-46;Hip;Actigraph;60s;No;1-10min;Jefferis et al., 2016;2010
-47;Hip;Actigraph;60s;No;10+min;Jefferis et al., 2016;2010
-48;Hip;Actigraph;60s;No;1-10min;Jefferis et al., 2018;2010
-49;Hip;Actigraph;60s;No;10+min;Jefferis et al., 2018;2010
-50;Hip;Actigraph;60s;No;1+min;Kheler et al., 2018;2003
-51;Hip;Actigraph;60s;Yes;10+min;Kheler et al., 2018;2003
-52;Hip;Actigraph;60s;No;1+min;Loprinzi et al., 2013;2003
-53;Hip;Actigraph;60s;Yes;10+min;Loprinzi et al., 2013;2003
-54;Hip;Actigraph;60s;No;1-10min;Loprinzi, 2017;2003
-55;Hip;Actigraph;60s;No;10+min;Loprinzi, 2017;2003
-56;Wrist;GENEActiv;60s;No;1+min;Mitchell et al., 2018;2014
-57;Wrist;GENEActiv;60s;Yes;10+min;Mitchell et al., 2018;2014
-58;Hip;Actigraph;?;No;15+s;Rava et al., 2018;?
-59;Hip;Actigraph;?;Yes;10+min;Rava et al., 2018;?
-60;Thigh;GENEActiv;10s;No;?s-10min;Ryan et al., 2019;2015
-61;Thigh;GENEActiv;10s;No;10+min;Ryan et al., 2019;2015
-62;Waist;Actigraph;60s;No;1+min;Saint-Maurice et al., 2018;2003
-63;Waist;Actigraph;60s;Yes;5+min;Saint-Maurice et al., 2018;2003
-64;Waist;Actigraph;60s;Yes;10+min;Saint-Maurice et al., 2018;2003
-65;Wrist;Axivity AX3;10s;No;10s-1min;Stamatakis et al., 2022;2013
-66;Wrist;Axivity AX3;10s;No;10s-2min;Stamatakis et al., 2022;2013
-67;Wrist;Axivity AX3;10s;No;2+min;Stamatakis et al., 2022;2013
-68;Wrist;Axivity AX3;10s;No;10s-1min;Stamatakis et al., 2023;2013
-69;Wrist;Axivity AX3;10s;No;10s-2min;Stamatakis et al., 2023;2013
-70;Wrist;Axivity AX3;10s;No;2+min;Stamatakis et al., 2023;2013
-71;Hip;Actigraph;60s;No;1+min;Strath et al., 2008;2003
-72;Hip;Actigraph;60s;No;10+min;Strath et al., 2008;2003
-73;Hip;Hookie AM 20;6s;No;30s-5min;Vasankari et al. 2017;2011
-74;Hip;Hookie AM 20;6s;No;5+min;Vasankari et al. 2017;2011
-75;Hip;Hookie AM 20;6s;No;10+min;Vasankari et al. 2017;2011
-76;Hip;Hookie AM 20;6s;No;15+min;Vasankari et al. 2017;2011
-77;Hip;Hookie AM 20;6s;No;30+min;Vasankari et al. 2017;2011
-78;Hip;Hookie AM 20;6s;No;10-min;Vasankari et al. 2017;2011
-79;Hip;Hookie AM 20;6s;No;15-min;Vasankari et al. 2017;2011
-80;Hip;Hookie AM 20;6s;No;30-min;Vasankari et al. 2017;2011
-81;Thigh;ActivPAL3 Micro;?;No;10+min;Verswijveren et al., 2022;2015
-82;Waist;Actigraph;60s;No;1-10min;White et al., 2015;2005
-83;Waist;Actigraph;60s;Yes;10+min;White et al., 2015;2005
-84;Hip;Actigraph;60s;Yes;10+min;Wolff-Hugues et al., 2015;2003
+6;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2012;2010
+7;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2012;2010
+8;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2012;2010
+9;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2012;2010
+10;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2012;2010
+11;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2013;2011
+12;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2013;2011
+13;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2013;2011
+14;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2013;2011
+15;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2013;2011
+16;Hip;Actigraph;60s;No;1-9min;Barone Gibbs et al., 2020;2005
+17;Hip;Actigraph;60s;Yes;10+min;Barone Gibbs et al., 2020;2005
+18;Waist;Actigraph;30s;No;30+s;Cameron et al., 2017;2010
+19;Waist;Actigraph;30s;Yes;10+min;Cameron et al., 2017;2010
+20;Wrist;Axivity AX3;?;No;1-5min;Cassidy et al., 2018;2013
+21;Wrist;Axivity AX3;?;No;10+min;Cassidy et al., 2018;2013
+22;Waist;Active style pro;60s;No;1+min;Chen et al., 2018;2017
+23;Waist;Active style pro;60s;Yes;10+min;Chen et al., 2018;2017
+24;Waist;Active style pro;60s;No;1-10min;Chen et al., 2020;2017
+25;Waist;Active style pro;60s;Yes;10+min;Chen et al., 2020;2017
+26;Wrist;GENEActiv;60s;No;1-9min;Chen et al., 2023;2012
+27;Wrist;GENEActiv;60s;No;10+min;Chen et al., 2023;2012
+28;Hip;Actical;60s;No;1+min;Clarke & Janssen, 2014;2007
+29;Hip;Actical;60s;No;10+min;Clarke & Janssen, 2014;2007
+30;Chest;Vitamove;?;No;1+min;Debache et al., 2019;2013
+31;Thigh;Vitamove;?;No;1+min;Debache et al., 2019;2013
+32;Hip;Actigraph;60s;No;1+min;De Winter et al., 2018;2003
+33;Hip;Actigraph;60s;No;5+min;De Winter et al., 2018;2003
+34;Hip;Actigraph;60s;No;10+min;De Winter et al., 2018;2003
+35;Hip;Actigraph;60s;No;30+min;De Winter et al., 2018;2003
+36;Hip;Actigraph;60s;No;60+min;De Winter et al., 2018;2003
+37;Hip;Axivity AX3;?;No;1+min;Del Din et al., 2020;2019
+38;Upper arm;SenseWear Pro2;?;No;?;Di Blasio et al., 2014;2011
+39;Upper arm;SenseWear Pro2;?;No;5+min;Di Blasio et al., 2014;2011
+40;Upper arm;SenseWear Pro2;?;No;10+min;Di Blasio et al., 2014;2011
+41;Hip;Actical;60s;No;1+min;Diaz et al., 2019;2009
+42;Hip;Actigraph;60s;No;1+min;Dos Santos et al., 2020;2013
+43;Hip;Actigraph;60s;No;10+min;Dos Santos et al., 2020;2013
+44;Hip;Actigraph;60s;No;1+min;Ekelund et al., 2019;2001
+45;Hip;Actical;60s;Yes;10+min;Ekelund et al., 2019;2003
+46;Hip;Actigraph;60s;No;1+min;Fan et al., 2013;2003
+47;Hip;Actigraph;60s;Yes;10+min;Fan et al., 2013;2003
+48;Hip;Actigraph;60s;No;1+min;Gay et al., 2016;2003
+49;Hip;Actigraph;60s;No;10+min;Gay et al., 2016;2003
+50;Waist;Actical;30s;No;30+s;Glazer et al., 2013;2008
+51;Waist;Actical;30s;Yes;10+min;Glazer et al., 2013;2008
+52;Upper arm;SenseWear Pro3;60s;No;1+min;Jackson et al., 2023;2022
+53;Upper arm;SenseWear Pro3;60s;No;10+min;Jackson et al., 2023;2022
+54;Upper arm;SenseWear Pro3;60s;No;10-min;Jackson et al., 2023;2022
+55;Hip;Actigraph;60s;No;1-10min;Jefferis et al., 2016;2010
+56;Hip;Actigraph;60s;No;10+min;Jefferis et al., 2016;2010
+57;Hip;Actigraph;60s;No;1-10min;Jefferis et al., 2019a;2010
+58;Hip;Actigraph;60s;No;10+min;Jefferis et al., 2019a;2010
+59;Hip;Actigraph;60s;No;1+min;Jefferis et al., 2019b;2010
+60;Hip;Actigraph;60s;No;1-9min;Jefferis et al., 2019b;2010
+61;Hip;Actigraph;60s;No;10+min;Jefferis et al., 2019b;2010
+62;Hip;Actigraph;60s;No;1+min;Kheler et al., 2018;2003
+63;Hip;Actigraph;60s;Yes;10+min;Kheler et al., 2018;2003
+64;Hip;Actigraph;60s;No;1-9min;Kheler et al., 2020;2003
+65;Hip;Actigraph;60s;Yes;10+min;Kheler et al., 2020;2003
+66;Chest;Actiheart;60s;No;1+min;Lindsay et al., 2019;2005
+67;Chest;Actiheart;60s;No;10+min;Lindsay et al., 2019;2005
+68;Hip;Actigraph;60s;No;1+min;Loprinzi et al., 2013;2003
+69;Hip;Actigraph;60s;Yes;10+min;Loprinzi et al., 2013;2003
+70;Hip;Actigraph;60s;No;1-10min;Loprinzi, 2017;2003
+71;Hip;Actigraph;60s;No;10+min;Loprinzi, 2017;2003
+72;Wrist;Axivity AX3;60s;No;1-15min;Millard et al., 2021;2013
+73;Wrist;Axivity AX3;60s;No;16-40min;Millard et al., 2021;2013
+74;Wrist;Axivity AX3;60s;No;41+min;Millard et al., 2021;2013
+75;Wrist;Axivity AX3;60s;No;1-9min;Millard et al., 2021;2013
+76;Wrist;Axivity AX3;60s;No;10+min;Millard et al., 2021;2013
+77;Wrist;GENEActiv;60s;No;1+min;Mitchell et al., 2018;2014
+78;Wrist;GENEActiv;60s;Yes;10+min;Mitchell et al., 2018;2014
+79;Thigh;ActivPAL;1s;No;1+s;Ostendorf et al., 2018;2009
+80;Thigh;ActivPAL;1s;No;10+min;Ostendorf et al., 2018;2009
+81;Upper arm;SenseWear Pro3;60s;No;5+min;Roe et al., 2023;2007
+82;Thigh;GENEActiv;10s;No;10s-10min;Ryan et al., 2019;2015
+83;Thigh;GENEActiv;10s;No;10+min;Ryan et al., 2019;2015
+84;Wrist;Axivity AX3;60s;No;3+min;Sabag et al., 2024;2006
+85;Waist;Actigraph;60s;No;1+min;Saint-Maurice et al., 2018;2003
+86;Waist;Actigraph;60s;Yes;5+min;Saint-Maurice et al., 2018;2003
+87;Waist;Actigraph;60s;Yes;10+min;Saint-Maurice et al., 2018;2003
+88;Hip;Actigraph;60s;No;1+min;Shiroma et al., 2019;2003
+89;Hip;Actigraph;60s;Yes;10+min;Shiroma et al., 2019;2003
+90;Wrist;Axivity AX3;10s;No;10s-1min;Stamatakis et al., 2022;2013
+91;Wrist;Axivity AX3;10s;No;10s-2min;Stamatakis et al., 2022;2013
+92;Wrist;Axivity AX3;10s;No;10s-1min;Stamatakis et al., 2023;2013
+93;Wrist;Axivity AX3;10s;No;10s-2min;Stamatakis et al., 2023;2013
+94;Wrist;Axivity AX3;10s;No;10s-1min;Stamatakis et al., 2024;2013
+95;Wrist;Axivity AX3;10s;No;10s-2min;Stamatakis et al., 2024;2013
+96;Hip;Actigraph;60s;No;1+min;Strath et al., 2008;2003
+97;Hip;Actigraph;60s;No;10+min;Strath et al., 2008;2003
+98;Hip;Hookie AM 20;6s;No;30s-5min;Vasankari et al. 2017;2011
+99;Hip;Hookie AM 20;6s;No;5+min;Vasankari et al. 2017;2011
+100;Hip;Hookie AM 20;6s;No;10+min;Vasankari et al. 2017;2011
+101;Hip;Hookie AM 20;6s;No;15+min;Vasankari et al. 2017;2011
+102;Hip;Hookie AM 20;6s;No;30+min;Vasankari et al. 2017;2011
+103;Hip;Hookie AM 20;6s;No;10-min;Vasankari et al. 2017;2011
+104;Hip;Hookie AM 20;6s;No;15-min;Vasankari et al. 2017;2011
+105;Hip;Hookie AM 20;6s;No;30-min;Vasankari et al. 2017;2011
+106;Thigh;ActivPAL;?;No;10+min;Verswijveren et al., 2022;2015
+107;Chest;Actiheart;60s;No;1-5min;Wanigatunga et al., 2019;2007
+108;Chest;Actiheart;60s;No;5-10min;Wanigatunga et al., 2019;2007
+109;Chest;Actiheart;60s;No;10+min;Wanigatunga et al., 2019;2007
+110;Waist;Actigraph;60s;No;1-10min;White et al., 2015;2005
+111;Waist;Actigraph;60s;Yes;10+min;White et al., 2015;2005
+112;Hip;Actigraph;60s;Yes;10+min;Wolff-Hugues et al., 2015;2003
+113;Wrist;GENEActiv;60s;No;1+min;Yerramalla et al., 2024;2012

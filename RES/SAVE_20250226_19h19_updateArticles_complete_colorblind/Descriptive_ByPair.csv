@@ -1,0 +1,519 @@
+"var1";"var2";"level1";"level2";"count";"rowPerc";"colPerc";"totPerc"
+"Position";"EpochDuration";"Thigh";"?";2;33,3333333333333;22,2222222222222;1,76991150442478
+"Position";"EpochDuration";"Thigh";"1s⁣";2;33,3333333333333;100;1,76991150442478
+"Position";"EpochDuration";"Thigh";"4-6s";0;0;0;0
+"Position";"EpochDuration";"Thigh";"10s";2;33,3333333333333;15,3846153846154;1,76991150442478
+"Position";"EpochDuration";"Thigh";"30s";0;0;0;0
+"Position";"EpochDuration";"Thigh";"60s";0;0;0;0
+"Position";"EpochDuration";"Upper arm";"?";3;42,8571428571429;33,3333333333333;2,65486725663717
+"Position";"EpochDuration";"Upper arm";"1s⁣";0;0;0;0
+"Position";"EpochDuration";"Upper arm";"4-6s";0;0;0;0
+"Position";"EpochDuration";"Upper arm";"10s";0;0;0;0
+"Position";"EpochDuration";"Upper arm";"30s";0;0;0;0
+"Position";"EpochDuration";"Upper arm";"60s";4;57,1428571428571;5,97014925373134;3,53982300884956
+"Position";"EpochDuration";"Wrist";"?";2;8,33333333333333;22,2222222222222;1,76991150442478
+"Position";"EpochDuration";"Wrist";"1s⁣";0;0;0;0
+"Position";"EpochDuration";"Wrist";"4-6s";0;0;0;0
+"Position";"EpochDuration";"Wrist";"10s";11;45,8333333333333;84,6153846153846;9,73451327433628
+"Position";"EpochDuration";"Wrist";"30s";0;0;0;0
+"Position";"EpochDuration";"Wrist";"60s";11;45,8333333333333;16,4179104477612;9,73451327433628
+"Position";"EpochDuration";"Chest";"?";1;16,6666666666667;11,1111111111111;0,884955752212389
+"Position";"EpochDuration";"Chest";"1s⁣";0;0;0;0
+"Position";"EpochDuration";"Chest";"4-6s";0;0;0;0
+"Position";"EpochDuration";"Chest";"10s";0;0;0;0
+"Position";"EpochDuration";"Chest";"30s";0;0;0;0
+"Position";"EpochDuration";"Chest";"60s";5;83,3333333333333;7,46268656716418;4,42477876106195
+"Position";"EpochDuration";"Hip / Waist";"?";1;1,42857142857143;11,1111111111111;0,884955752212389
+"Position";"EpochDuration";"Hip / Waist";"1s⁣";0;0;0;0
+"Position";"EpochDuration";"Hip / Waist";"4-6s";18;25,7142857142857;100;15,929203539823
+"Position";"EpochDuration";"Hip / Waist";"10s";0;0;0;0
+"Position";"EpochDuration";"Hip / Waist";"30s";4;5,71428571428571;100;3,53982300884956
+"Position";"EpochDuration";"Hip / Waist";"60s";47;67,1428571428571;70,1492537313433;41,5929203539823
+"Position";"DropTime";"Thigh";"No";6;100;6,18556701030928;5,30973451327434
+"Position";"DropTime";"Thigh";"Yes";0;0;0;0
+"Position";"DropTime";"Upper arm";"No";7;100;7,21649484536082;6,19469026548673
+"Position";"DropTime";"Upper arm";"Yes";0;0;0;0
+"Position";"DropTime";"Wrist";"No";23;95,8333333333333;23,7113402061856;20,353982300885
+"Position";"DropTime";"Wrist";"Yes";1;4,16666666666667;6,25;0,884955752212389
+"Position";"DropTime";"Chest";"No";6;100;6,18556701030928;5,30973451327434
+"Position";"DropTime";"Chest";"Yes";0;0;0;0
+"Position";"DropTime";"Hip / Waist";"No";55;78,5714285714286;56,701030927835;48,6725663716814
+"Position";"DropTime";"Hip / Waist";"Yes";15;21,4285714285714;93,75;13,2743362831858
+"Position";"BoutDuration";"Thigh";"?";0;0;0;0
+"Position";"BoutDuration";"Thigh";"1s";1;16,6666666666667;100;0,884955752212389
+"Position";"BoutDuration";"Thigh";"10-32s";1;16,6666666666667;5,55555555555556;0,884955752212389
+"Position";"BoutDuration";"Thigh";"1min";1;16,6666666666667;2,7027027027027;0,884955752212389
+"Position";"BoutDuration";"Thigh";"2-5min";0;0;0;0
+"Position";"BoutDuration";"Thigh";"10min";3;50;8,10810810810811;2,65486725663717
+"Position";"BoutDuration";"Thigh";"15-60min";0;0;0;0
+"Position";"BoutDuration";"Upper arm";"?";1;14,2857142857143;100;0,884955752212389
+"Position";"BoutDuration";"Upper arm";"1s";0;0;0;0
+"Position";"BoutDuration";"Upper arm";"10-32s";1;14,2857142857143;5,55555555555556;0,884955752212389
+"Position";"BoutDuration";"Upper arm";"1min";1;14,2857142857143;2,7027027027027;0,884955752212389
+"Position";"BoutDuration";"Upper arm";"2-5min";2;28,5714285714286;15,3846153846154;1,76991150442478
+"Position";"BoutDuration";"Upper arm";"10min";2;28,5714285714286;5,40540540540541;1,76991150442478
+"Position";"BoutDuration";"Upper arm";"15-60min";0;0;0;0
+"Position";"BoutDuration";"Wrist";"?";0;0;0;0
+"Position";"BoutDuration";"Wrist";"1s";0;0;0;0
+"Position";"BoutDuration";"Wrist";"10-32s";8;33,3333333333333;44,4444444444444;7,07964601769912
+"Position";"BoutDuration";"Wrist";"1min";7;29,1666666666667;18,9189189189189;6,19469026548673
+"Position";"BoutDuration";"Wrist";"2-5min";3;12,5;23,0769230769231;2,65486725663717
+"Position";"BoutDuration";"Wrist";"10min";4;16,6666666666667;10,8108108108108;3,53982300884956
+"Position";"BoutDuration";"Wrist";"15-60min";2;8,33333333333333;33,3333333333333;1,76991150442478
+"Position";"BoutDuration";"Chest";"?";0;0;0;0
+"Position";"BoutDuration";"Chest";"1s";0;0;0;0
+"Position";"BoutDuration";"Chest";"10-32s";0;0;0;0
+"Position";"BoutDuration";"Chest";"1min";3;50;8,10810810810811;2,65486725663717
+"Position";"BoutDuration";"Chest";"2-5min";1;16,6666666666667;7,69230769230769;0,884955752212389
+"Position";"BoutDuration";"Chest";"10min";2;33,3333333333333;5,40540540540541;1,76991150442478
+"Position";"BoutDuration";"Chest";"15-60min";0;0;0;0
+"Position";"BoutDuration";"Hip / Waist";"?";0;0;0;0
+"Position";"BoutDuration";"Hip / Waist";"1s";0;0;0;0
+"Position";"BoutDuration";"Hip / Waist";"10-32s";8;11,4285714285714;44,4444444444444;7,07964601769912
+"Position";"BoutDuration";"Hip / Waist";"1min";25;35,7142857142857;67,5675675675676;22,1238938053097
+"Position";"BoutDuration";"Hip / Waist";"2-5min";7;10;53,8461538461538;6,19469026548673
+"Position";"BoutDuration";"Hip / Waist";"10min";26;37,1428571428571;70,2702702702703;23,0088495575221
+"Position";"BoutDuration";"Hip / Waist";"15-60min";4;5,71428571428571;66,6666666666667;3,53982300884956
+"Position";"Device";"Thigh";"SenseWear";0;0;0;0
+"Position";"Device";"Thigh";"Lifecorder";0;0;0;0
+"Position";"Device";"Thigh";"ActivPAL";3;50;100;2,65486725663717
+"Position";"Device";"Thigh";"Active style";0;0;0;0
+"Position";"Device";"Thigh";"Vitamove";1;16,6666666666667;50;0,884955752212389
+"Position";"Device";"Thigh";"Hookie";0;0;0;0
+"Position";"Device";"Thigh";"GENEActiv";2;33,3333333333333;28,5714285714286;1,76991150442478
+"Position";"Device";"Thigh";"Axivity";0;0;0;0
+"Position";"Device";"Thigh";"Actiheart";0;0;0;0
+"Position";"Device";"Thigh";"Actigraph";0;0;0;0
+"Position";"Device";"Thigh";"Actical";0;0;0;0
+"Position";"Device";"Upper arm";"SenseWear";7;100;100;6,19469026548673
+"Position";"Device";"Upper arm";"Lifecorder";0;0;0;0
+"Position";"Device";"Upper arm";"ActivPAL";0;0;0;0
+"Position";"Device";"Upper arm";"Active style";0;0;0;0
+"Position";"Device";"Upper arm";"Vitamove";0;0;0;0
+"Position";"Device";"Upper arm";"Hookie";0;0;0;0
+"Position";"Device";"Upper arm";"GENEActiv";0;0;0;0
+"Position";"Device";"Upper arm";"Axivity";0;0;0;0
+"Position";"Device";"Upper arm";"Actiheart";0;0;0;0
+"Position";"Device";"Upper arm";"Actigraph";0;0;0;0
+"Position";"Device";"Upper arm";"Actical";0;0;0;0
+"Position";"Device";"Wrist";"SenseWear";0;0;0;0
+"Position";"Device";"Wrist";"Lifecorder";0;0;0;0
+"Position";"Device";"Wrist";"ActivPAL";0;0;0;0
+"Position";"Device";"Wrist";"Active style";0;0;0;0
+"Position";"Device";"Wrist";"Vitamove";0;0;0;0
+"Position";"Device";"Wrist";"Hookie";0;0;0;0
+"Position";"Device";"Wrist";"GENEActiv";5;20,8333333333333;71,4285714285714;4,42477876106195
+"Position";"Device";"Wrist";"Axivity";19;79,1666666666667;95;16,8141592920354
+"Position";"Device";"Wrist";"Actiheart";0;0;0;0
+"Position";"Device";"Wrist";"Actigraph";0;0;0;0
+"Position";"Device";"Wrist";"Actical";0;0;0;0
+"Position";"Device";"Chest";"SenseWear";0;0;0;0
+"Position";"Device";"Chest";"Lifecorder";0;0;0;0
+"Position";"Device";"Chest";"ActivPAL";0;0;0;0
+"Position";"Device";"Chest";"Active style";0;0;0;0
+"Position";"Device";"Chest";"Vitamove";1;16,6666666666667;50;0,884955752212389
+"Position";"Device";"Chest";"Hookie";0;0;0;0
+"Position";"Device";"Chest";"GENEActiv";0;0;0;0
+"Position";"Device";"Chest";"Axivity";0;0;0;0
+"Position";"Device";"Chest";"Actiheart";5;83,3333333333333;100;4,42477876106195
+"Position";"Device";"Chest";"Actigraph";0;0;0;0
+"Position";"Device";"Chest";"Actical";0;0;0;0
+"Position";"Device";"Hip / Waist";"SenseWear";0;0;0;0
+"Position";"Device";"Hip / Waist";"Lifecorder";10;14,2857142857143;100;8,84955752212389
+"Position";"Device";"Hip / Waist";"ActivPAL";0;0;0;0
+"Position";"Device";"Hip / Waist";"Active style";4;5,71428571428571;100;3,53982300884956
+"Position";"Device";"Hip / Waist";"Vitamove";0;0;0;0
+"Position";"Device";"Hip / Waist";"Hookie";8;11,4285714285714;100;7,07964601769912
+"Position";"Device";"Hip / Waist";"GENEActiv";0;0;0;0
+"Position";"Device";"Hip / Waist";"Axivity";1;1,42857142857143;5;0,884955752212389
+"Position";"Device";"Hip / Waist";"Actiheart";0;0;0;0
+"Position";"Device";"Hip / Waist";"Actigraph";41;58,5714285714286;100;36,283185840708
+"Position";"Device";"Hip / Waist";"Actical";6;8,57142857142857;100;5,30973451327434
+"Position";"StartYear";"Thigh";"?";0;0;0;0
+"Position";"StartYear";"Thigh";"2015-2019";3;50;42,8571428571429;2,65486725663717
+"Position";"StartYear";"Thigh";"2010-2014";1;16,6666666666667;2,27272727272727;0,884955752212389
+"Position";"StartYear";"Thigh";"2005-2009";2;33,3333333333333;11,1111111111111;1,76991150442478
+"Position";"StartYear";"Thigh";"2000-2004";0;0;0;0
+"Position";"StartYear";"Upper arm";"?";6;85,7142857142857;35,2941176470588;5,30973451327434
+"Position";"StartYear";"Upper arm";"2015-2019";0;0;0;0
+"Position";"StartYear";"Upper arm";"2010-2014";0;0;0;0
+"Position";"StartYear";"Upper arm";"2005-2009";1;14,2857142857143;5,55555555555556;0,884955752212389
+"Position";"StartYear";"Upper arm";"2000-2004";0;0;0;0
+"Position";"StartYear";"Wrist";"?";0;0;0;0
+"Position";"StartYear";"Wrist";"2015-2019";0;0;0;0
+"Position";"StartYear";"Wrist";"2010-2014";23;95,8333333333333;52,2727272727273;20,353982300885
+"Position";"StartYear";"Wrist";"2005-2009";1;4,16666666666667;5,55555555555556;0,884955752212389
+"Position";"StartYear";"Wrist";"2000-2004";0;0;0;0
+"Position";"StartYear";"Chest";"?";0;0;0;0
+"Position";"StartYear";"Chest";"2015-2019";0;0;0;0
+"Position";"StartYear";"Chest";"2010-2014";1;16,6666666666667;2,27272727272727;0,884955752212389
+"Position";"StartYear";"Chest";"2005-2009";5;83,3333333333333;27,7777777777778;4,42477876106195
+"Position";"StartYear";"Chest";"2000-2004";0;0;0;0
+"Position";"StartYear";"Hip / Waist";"?";11;15,7142857142857;64,7058823529412;9,73451327433628
+"Position";"StartYear";"Hip / Waist";"2015-2019";4;5,71428571428571;57,1428571428571;3,53982300884956
+"Position";"StartYear";"Hip / Waist";"2010-2014";19;27,1428571428571;43,1818181818182;16,8141592920354
+"Position";"StartYear";"Hip / Waist";"2005-2009";9;12,8571428571429;50;7,9646017699115
+"Position";"StartYear";"Hip / Waist";"2000-2004";27;38,5714285714286;100;23,8938053097345
+"EpochDuration";"DropTime";"?";"No";9;100;9,27835051546392;7,9646017699115
+"EpochDuration";"DropTime";"?";"Yes";0;0;0;0
+"EpochDuration";"DropTime";"1s⁣";"No";2;100;2,06185567010309;1,76991150442478
+"EpochDuration";"DropTime";"1s⁣";"Yes";0;0;0;0
+"EpochDuration";"DropTime";"4-6s";"No";18;100;18,5567010309278;15,929203539823
+"EpochDuration";"DropTime";"4-6s";"Yes";0;0;0;0
+"EpochDuration";"DropTime";"10s";"No";13;100;13,4020618556701;11,5044247787611
+"EpochDuration";"DropTime";"10s";"Yes";0;0;0;0
+"EpochDuration";"DropTime";"30s";"No";2;50;2,06185567010309;1,76991150442478
+"EpochDuration";"DropTime";"30s";"Yes";2;50;12,5;1,76991150442478
+"EpochDuration";"DropTime";"60s";"No";53;79,1044776119403;54,639175257732;46,9026548672566
+"EpochDuration";"DropTime";"60s";"Yes";14;20,8955223880597;87,5;12,3893805309735
+"EpochDuration";"BoutDuration";"?";"?";1;11,1111111111111;100;0,884955752212389
+"EpochDuration";"BoutDuration";"?";"1s";0;0;0;0
+"EpochDuration";"BoutDuration";"?";"10-32s";0;0;0;0
+"EpochDuration";"BoutDuration";"?";"1min";4;44,4444444444444;10,8108108108108;3,53982300884956
+"EpochDuration";"BoutDuration";"?";"2-5min";1;11,1111111111111;7,69230769230769;0,884955752212389
+"EpochDuration";"BoutDuration";"?";"10min";3;33,3333333333333;8,10810810810811;2,65486725663717
+"EpochDuration";"BoutDuration";"?";"15-60min";0;0;0;0
+"EpochDuration";"BoutDuration";"1s⁣";"?";0;0;0;0
+"EpochDuration";"BoutDuration";"1s⁣";"1s";1;50;100;0,884955752212389
+"EpochDuration";"BoutDuration";"1s⁣";"10-32s";0;0;0;0
+"EpochDuration";"BoutDuration";"1s⁣";"1min";0;0;0;0
+"EpochDuration";"BoutDuration";"1s⁣";"2-5min";0;0;0;0
+"EpochDuration";"BoutDuration";"1s⁣";"10min";1;50;2,7027027027027;0,884955752212389
+"EpochDuration";"BoutDuration";"1s⁣";"15-60min";0;0;0;0
+"EpochDuration";"BoutDuration";"4-6s";"?";0;0;0;0
+"EpochDuration";"BoutDuration";"4-6s";"1s";0;0;0;0
+"EpochDuration";"BoutDuration";"4-6s";"10-32s";6;33,3333333333333;33,3333333333333;5,30973451327434
+"EpochDuration";"BoutDuration";"4-6s";"1min";2;11,1111111111111;5,40540540540541;1,76991150442478
+"EpochDuration";"BoutDuration";"4-6s";"2-5min";5;27,7777777777778;38,4615384615385;4,42477876106195
+"EpochDuration";"BoutDuration";"4-6s";"10min";3;16,6666666666667;8,10810810810811;2,65486725663717
+"EpochDuration";"BoutDuration";"4-6s";"15-60min";2;11,1111111111111;33,3333333333333;1,76991150442478
+"EpochDuration";"BoutDuration";"10s";"?";0;0;0;0
+"EpochDuration";"BoutDuration";"10s";"1s";0;0;0;0
+"EpochDuration";"BoutDuration";"10s";"10-32s";9;69,2307692307692;50;7,9646017699115
+"EpochDuration";"BoutDuration";"10s";"1min";1;7,69230769230769;2,7027027027027;0,884955752212389
+"EpochDuration";"BoutDuration";"10s";"2-5min";2;15,3846153846154;15,3846153846154;1,76991150442478
+"EpochDuration";"BoutDuration";"10s";"10min";1;7,69230769230769;2,7027027027027;0,884955752212389
+"EpochDuration";"BoutDuration";"10s";"15-60min";0;0;0;0
+"EpochDuration";"BoutDuration";"30s";"?";0;0;0;0
+"EpochDuration";"BoutDuration";"30s";"1s";0;0;0;0
+"EpochDuration";"BoutDuration";"30s";"10-32s";2;50;11,1111111111111;1,76991150442478
+"EpochDuration";"BoutDuration";"30s";"1min";0;0;0;0
+"EpochDuration";"BoutDuration";"30s";"2-5min";0;0;0;0
+"EpochDuration";"BoutDuration";"30s";"10min";2;50;5,40540540540541;1,76991150442478
+"EpochDuration";"BoutDuration";"30s";"15-60min";0;0;0;0
+"EpochDuration";"BoutDuration";"60s";"?";0;0;0;0
+"EpochDuration";"BoutDuration";"60s";"1s";0;0;0;0
+"EpochDuration";"BoutDuration";"60s";"10-32s";1;1,49253731343284;5,55555555555556;0,884955752212389
+"EpochDuration";"BoutDuration";"60s";"1min";30;44,7761194029851;81,0810810810811;26,5486725663717
+"EpochDuration";"BoutDuration";"60s";"2-5min";5;7,46268656716418;38,4615384615385;4,42477876106195
+"EpochDuration";"BoutDuration";"60s";"10min";27;40,2985074626866;72,972972972973;23,8938053097345
+"EpochDuration";"BoutDuration";"60s";"15-60min";4;5,97014925373134;66,6666666666667;3,53982300884956
+"EpochDuration";"Device";"?";"SenseWear";3;33,3333333333333;42,8571428571429;2,65486725663717
+"EpochDuration";"Device";"?";"Lifecorder";0;0;0;0
+"EpochDuration";"Device";"?";"ActivPAL";1;11,1111111111111;33,3333333333333;0,884955752212389
+"EpochDuration";"Device";"?";"Active style";0;0;0;0
+"EpochDuration";"Device";"?";"Vitamove";2;22,2222222222222;100;1,76991150442478
+"EpochDuration";"Device";"?";"Hookie";0;0;0;0
+"EpochDuration";"Device";"?";"GENEActiv";0;0;0;0
+"EpochDuration";"Device";"?";"Axivity";3;33,3333333333333;15;2,65486725663717
+"EpochDuration";"Device";"?";"Actiheart";0;0;0;0
+"EpochDuration";"Device";"?";"Actigraph";0;0;0;0
+"EpochDuration";"Device";"?";"Actical";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"SenseWear";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"Lifecorder";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"ActivPAL";2;100;66,6666666666667;1,76991150442478
+"EpochDuration";"Device";"1s⁣";"Active style";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"Vitamove";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"Hookie";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"GENEActiv";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"Axivity";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"Actiheart";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"Actigraph";0;0;0;0
+"EpochDuration";"Device";"1s⁣";"Actical";0;0;0;0
+"EpochDuration";"Device";"4-6s";"SenseWear";0;0;0;0
+"EpochDuration";"Device";"4-6s";"Lifecorder";10;55,5555555555556;100;8,84955752212389
+"EpochDuration";"Device";"4-6s";"ActivPAL";0;0;0;0
+"EpochDuration";"Device";"4-6s";"Active style";0;0;0;0
+"EpochDuration";"Device";"4-6s";"Vitamove";0;0;0;0
+"EpochDuration";"Device";"4-6s";"Hookie";8;44,4444444444444;100;7,07964601769912
+"EpochDuration";"Device";"4-6s";"GENEActiv";0;0;0;0
+"EpochDuration";"Device";"4-6s";"Axivity";0;0;0;0
+"EpochDuration";"Device";"4-6s";"Actiheart";0;0;0;0
+"EpochDuration";"Device";"4-6s";"Actigraph";0;0;0;0
+"EpochDuration";"Device";"4-6s";"Actical";0;0;0;0
+"EpochDuration";"Device";"10s";"SenseWear";0;0;0;0
+"EpochDuration";"Device";"10s";"Lifecorder";0;0;0;0
+"EpochDuration";"Device";"10s";"ActivPAL";0;0;0;0
+"EpochDuration";"Device";"10s";"Active style";0;0;0;0
+"EpochDuration";"Device";"10s";"Vitamove";0;0;0;0
+"EpochDuration";"Device";"10s";"Hookie";0;0;0;0
+"EpochDuration";"Device";"10s";"GENEActiv";2;15,3846153846154;28,5714285714286;1,76991150442478
+"EpochDuration";"Device";"10s";"Axivity";11;84,6153846153846;55;9,73451327433628
+"EpochDuration";"Device";"10s";"Actiheart";0;0;0;0
+"EpochDuration";"Device";"10s";"Actigraph";0;0;0;0
+"EpochDuration";"Device";"10s";"Actical";0;0;0;0
+"EpochDuration";"Device";"30s";"SenseWear";0;0;0;0
+"EpochDuration";"Device";"30s";"Lifecorder";0;0;0;0
+"EpochDuration";"Device";"30s";"ActivPAL";0;0;0;0
+"EpochDuration";"Device";"30s";"Active style";0;0;0;0
+"EpochDuration";"Device";"30s";"Vitamove";0;0;0;0
+"EpochDuration";"Device";"30s";"Hookie";0;0;0;0
+"EpochDuration";"Device";"30s";"GENEActiv";0;0;0;0
+"EpochDuration";"Device";"30s";"Axivity";0;0;0;0
+"EpochDuration";"Device";"30s";"Actiheart";0;0;0;0
+"EpochDuration";"Device";"30s";"Actigraph";2;50;4,8780487804878;1,76991150442478
+"EpochDuration";"Device";"30s";"Actical";2;50;33,3333333333333;1,76991150442478
+"EpochDuration";"Device";"60s";"SenseWear";4;5,97014925373134;57,1428571428571;3,53982300884956
+"EpochDuration";"Device";"60s";"Lifecorder";0;0;0;0
+"EpochDuration";"Device";"60s";"ActivPAL";0;0;0;0
+"EpochDuration";"Device";"60s";"Active style";4;5,97014925373134;100;3,53982300884956
+"EpochDuration";"Device";"60s";"Vitamove";0;0;0;0
+"EpochDuration";"Device";"60s";"Hookie";0;0;0;0
+"EpochDuration";"Device";"60s";"GENEActiv";5;7,46268656716418;71,4285714285714;4,42477876106195
+"EpochDuration";"Device";"60s";"Axivity";6;8,95522388059701;30;5,30973451327434
+"EpochDuration";"Device";"60s";"Actiheart";5;7,46268656716418;100;4,42477876106195
+"EpochDuration";"Device";"60s";"Actigraph";39;58,2089552238806;95,1219512195122;34,5132743362832
+"EpochDuration";"Device";"60s";"Actical";4;5,97014925373134;66,6666666666667;3,53982300884956
+"EpochDuration";"StartYear";"?";"?";4;44,4444444444444;23,5294117647059;3,53982300884956
+"EpochDuration";"StartYear";"?";"2015-2019";1;11,1111111111111;14,2857142857143;0,884955752212389
+"EpochDuration";"StartYear";"?";"2010-2014";4;44,4444444444444;9,09090909090909;3,53982300884956
+"EpochDuration";"StartYear";"?";"2005-2009";0;0;0;0
+"EpochDuration";"StartYear";"?";"2000-2004";0;0;0;0
+"EpochDuration";"StartYear";"1s⁣";"?";0;0;0;0
+"EpochDuration";"StartYear";"1s⁣";"2015-2019";0;0;0;0
+"EpochDuration";"StartYear";"1s⁣";"2010-2014";0;0;0;0
+"EpochDuration";"StartYear";"1s⁣";"2005-2009";2;100;11,1111111111111;1,76991150442478
+"EpochDuration";"StartYear";"1s⁣";"2000-2004";0;0;0;0
+"EpochDuration";"StartYear";"4-6s";"?";10;55,5555555555556;58,8235294117647;8,84955752212389
+"EpochDuration";"StartYear";"4-6s";"2015-2019";0;0;0;0
+"EpochDuration";"StartYear";"4-6s";"2010-2014";8;44,4444444444444;18,1818181818182;7,07964601769912
+"EpochDuration";"StartYear";"4-6s";"2005-2009";0;0;0;0
+"EpochDuration";"StartYear";"4-6s";"2000-2004";0;0;0;0
+"EpochDuration";"StartYear";"10s";"?";0;0;0;0
+"EpochDuration";"StartYear";"10s";"2015-2019";2;15,3846153846154;28,5714285714286;1,76991150442478
+"EpochDuration";"StartYear";"10s";"2010-2014";11;84,6153846153846;25;9,73451327433628
+"EpochDuration";"StartYear";"10s";"2005-2009";0;0;0;0
+"EpochDuration";"StartYear";"10s";"2000-2004";0;0;0;0
+"EpochDuration";"StartYear";"30s";"?";0;0;0;0
+"EpochDuration";"StartYear";"30s";"2015-2019";0;0;0;0
+"EpochDuration";"StartYear";"30s";"2010-2014";2;50;4,54545454545455;1,76991150442478
+"EpochDuration";"StartYear";"30s";"2005-2009";2;50;11,1111111111111;1,76991150442478
+"EpochDuration";"StartYear";"30s";"2000-2004";0;0;0;0
+"EpochDuration";"StartYear";"60s";"?";3;4,47761194029851;17,6470588235294;2,65486725663717
+"EpochDuration";"StartYear";"60s";"2015-2019";4;5,97014925373134;57,1428571428571;3,53982300884956
+"EpochDuration";"StartYear";"60s";"2010-2014";19;28,3582089552239;43,1818181818182;16,8141592920354
+"EpochDuration";"StartYear";"60s";"2005-2009";14;20,8955223880597;77,7777777777778;12,3893805309735
+"EpochDuration";"StartYear";"60s";"2000-2004";27;40,2985074626866;100;23,8938053097345
+"DropTime";"BoutDuration";"No";"?";1;1,03092783505155;100;0,884955752212389
+"DropTime";"BoutDuration";"No";"1s";1;1,03092783505155;100;0,884955752212389
+"DropTime";"BoutDuration";"No";"10-32s";18;18,5567010309278;100;15,929203539823
+"DropTime";"BoutDuration";"No";"1min";37;38,1443298969072;100;32,7433628318584
+"DropTime";"BoutDuration";"No";"2-5min";12;12,3711340206186;92,3076923076923;10,6194690265487
+"DropTime";"BoutDuration";"No";"10min";22;22,680412371134;59,4594594594595;19,4690265486726
+"DropTime";"BoutDuration";"No";"15-60min";6;6,18556701030928;100;5,30973451327434
+"DropTime";"BoutDuration";"Yes";"?";0;0;0;0
+"DropTime";"BoutDuration";"Yes";"1s";0;0;0;0
+"DropTime";"BoutDuration";"Yes";"10-32s";0;0;0;0
+"DropTime";"BoutDuration";"Yes";"1min";0;0;0;0
+"DropTime";"BoutDuration";"Yes";"2-5min";1;6,25;7,69230769230769;0,884955752212389
+"DropTime";"BoutDuration";"Yes";"10min";15;93,75;40,5405405405405;13,2743362831858
+"DropTime";"BoutDuration";"Yes";"15-60min";0;0;0;0
+"DropTime";"Device";"No";"SenseWear";7;7,21649484536082;100;6,19469026548673
+"DropTime";"Device";"No";"Lifecorder";10;10,3092783505155;100;8,84955752212389
+"DropTime";"Device";"No";"ActivPAL";3;3,09278350515464;100;2,65486725663717
+"DropTime";"Device";"No";"Active style";2;2,06185567010309;50;1,76991150442478
+"DropTime";"Device";"No";"Vitamove";2;2,06185567010309;100;1,76991150442478
+"DropTime";"Device";"No";"Hookie";8;8,24742268041237;100;7,07964601769912
+"DropTime";"Device";"No";"GENEActiv";6;6,18556701030928;85,7142857142857;5,30973451327434
+"DropTime";"Device";"No";"Axivity";20;20,6185567010309;100;17,6991150442478
+"DropTime";"Device";"No";"Actiheart";5;5,15463917525773;100;4,42477876106195
+"DropTime";"Device";"No";"Actigraph";30;30,9278350515464;73,1707317073171;26,5486725663717
+"DropTime";"Device";"No";"Actical";4;4,12371134020619;66,6666666666667;3,53982300884956
+"DropTime";"Device";"Yes";"SenseWear";0;0;0;0
+"DropTime";"Device";"Yes";"Lifecorder";0;0;0;0
+"DropTime";"Device";"Yes";"ActivPAL";0;0;0;0
+"DropTime";"Device";"Yes";"Active style";2;12,5;50;1,76991150442478
+"DropTime";"Device";"Yes";"Vitamove";0;0;0;0
+"DropTime";"Device";"Yes";"Hookie";0;0;0;0
+"DropTime";"Device";"Yes";"GENEActiv";1;6,25;14,2857142857143;0,884955752212389
+"DropTime";"Device";"Yes";"Axivity";0;0;0;0
+"DropTime";"Device";"Yes";"Actiheart";0;0;0;0
+"DropTime";"Device";"Yes";"Actigraph";11;68,75;26,8292682926829;9,73451327433628
+"DropTime";"Device";"Yes";"Actical";2;12,5;33,3333333333333;1,76991150442478
+"DropTime";"StartYear";"No";"?";17;17,5257731958763;100;15,0442477876106
+"DropTime";"StartYear";"No";"2015-2019";5;5,15463917525773;71,4285714285714;4,42477876106195
+"DropTime";"StartYear";"No";"2010-2014";42;43,298969072165;95,4545454545455;37,1681415929204
+"DropTime";"StartYear";"No";"2005-2009";15;15,4639175257732;83,3333333333333;13,2743362831858
+"DropTime";"StartYear";"No";"2000-2004";18;18,5567010309278;66,6666666666667;15,929203539823
+"DropTime";"StartYear";"Yes";"?";0;0;0;0
+"DropTime";"StartYear";"Yes";"2015-2019";2;12,5;28,5714285714286;1,76991150442478
+"DropTime";"StartYear";"Yes";"2010-2014";2;12,5;4,54545454545455;1,76991150442478
+"DropTime";"StartYear";"Yes";"2005-2009";3;18,75;16,6666666666667;2,65486725663717
+"DropTime";"StartYear";"Yes";"2000-2004";9;56,25;33,3333333333333;7,9646017699115
+"BoutDuration";"Device";"?";"SenseWear";1;100;14,2857142857143;0,884955752212389
+"BoutDuration";"Device";"?";"Lifecorder";0;0;0;0
+"BoutDuration";"Device";"?";"ActivPAL";0;0;0;0
+"BoutDuration";"Device";"?";"Active style";0;0;0;0
+"BoutDuration";"Device";"?";"Vitamove";0;0;0;0
+"BoutDuration";"Device";"?";"Hookie";0;0;0;0
+"BoutDuration";"Device";"?";"GENEActiv";0;0;0;0
+"BoutDuration";"Device";"?";"Axivity";0;0;0;0
+"BoutDuration";"Device";"?";"Actiheart";0;0;0;0
+"BoutDuration";"Device";"?";"Actigraph";0;0;0;0
+"BoutDuration";"Device";"?";"Actical";0;0;0;0
+"BoutDuration";"Device";"1s";"SenseWear";0;0;0;0
+"BoutDuration";"Device";"1s";"Lifecorder";0;0;0;0
+"BoutDuration";"Device";"1s";"ActivPAL";1;100;33,3333333333333;0,884955752212389
+"BoutDuration";"Device";"1s";"Active style";0;0;0;0
+"BoutDuration";"Device";"1s";"Vitamove";0;0;0;0
+"BoutDuration";"Device";"1s";"Hookie";0;0;0;0
+"BoutDuration";"Device";"1s";"GENEActiv";0;0;0;0
+"BoutDuration";"Device";"1s";"Axivity";0;0;0;0
+"BoutDuration";"Device";"1s";"Actiheart";0;0;0;0
+"BoutDuration";"Device";"1s";"Actigraph";0;0;0;0
+"BoutDuration";"Device";"1s";"Actical";0;0;0;0
+"BoutDuration";"Device";"10-32s";"SenseWear";1;5,55555555555556;14,2857142857143;0,884955752212389
+"BoutDuration";"Device";"10-32s";"Lifecorder";2;11,1111111111111;20;1,76991150442478
+"BoutDuration";"Device";"10-32s";"ActivPAL";0;0;0;0
+"BoutDuration";"Device";"10-32s";"Active style";0;0;0;0
+"BoutDuration";"Device";"10-32s";"Vitamove";0;0;0;0
+"BoutDuration";"Device";"10-32s";"Hookie";4;22,2222222222222;50;3,53982300884956
+"BoutDuration";"Device";"10-32s";"GENEActiv";1;5,55555555555556;14,2857142857143;0,884955752212389
+"BoutDuration";"Device";"10-32s";"Axivity";8;44,4444444444444;40;7,07964601769912
+"BoutDuration";"Device";"10-32s";"Actiheart";0;0;0;0
+"BoutDuration";"Device";"10-32s";"Actigraph";1;5,55555555555556;2,4390243902439;0,884955752212389
+"BoutDuration";"Device";"10-32s";"Actical";1;5,55555555555556;16,6666666666667;0,884955752212389
+"BoutDuration";"Device";"1min";"SenseWear";1;2,7027027027027;14,2857142857143;0,884955752212389
+"BoutDuration";"Device";"1min";"Lifecorder";2;5,40540540540541;20;1,76991150442478
+"BoutDuration";"Device";"1min";"ActivPAL";0;0;0;0
+"BoutDuration";"Device";"1min";"Active style";2;5,40540540540541;50;1,76991150442478
+"BoutDuration";"Device";"1min";"Vitamove";2;5,40540540540541;100;1,76991150442478
+"BoutDuration";"Device";"1min";"Hookie";0;0;0;0
+"BoutDuration";"Device";"1min";"GENEActiv";3;8,10810810810811;42,8571428571429;2,65486725663717
+"BoutDuration";"Device";"1min";"Axivity";5;13,5135135135135;25;4,42477876106195
+"BoutDuration";"Device";"1min";"Actiheart";2;5,40540540540541;40;1,76991150442478
+"BoutDuration";"Device";"1min";"Actigraph";18;48,6486486486486;43,9024390243902;15,929203539823
+"BoutDuration";"Device";"1min";"Actical";2;5,40540540540541;33,3333333333333;1,76991150442478
+"BoutDuration";"Device";"2-5min";"SenseWear";2;15,3846153846154;28,5714285714286;1,76991150442478
+"BoutDuration";"Device";"2-5min";"Lifecorder";4;30,7692307692308;40;3,53982300884956
+"BoutDuration";"Device";"2-5min";"ActivPAL";0;0;0;0
+"BoutDuration";"Device";"2-5min";"Active style";0;0;0;0
+"BoutDuration";"Device";"2-5min";"Vitamove";0;0;0;0
+"BoutDuration";"Device";"2-5min";"Hookie";1;7,69230769230769;12,5;0,884955752212389
+"BoutDuration";"Device";"2-5min";"GENEActiv";0;0;0;0
+"BoutDuration";"Device";"2-5min";"Axivity";3;23,0769230769231;15;2,65486725663717
+"BoutDuration";"Device";"2-5min";"Actiheart";1;7,69230769230769;20;0,884955752212389
+"BoutDuration";"Device";"2-5min";"Actigraph";2;15,3846153846154;4,8780487804878;1,76991150442478
+"BoutDuration";"Device";"2-5min";"Actical";0;0;0;0
+"BoutDuration";"Device";"10min";"SenseWear";2;5,40540540540541;28,5714285714286;1,76991150442478
+"BoutDuration";"Device";"10min";"Lifecorder";2;5,40540540540541;20;1,76991150442478
+"BoutDuration";"Device";"10min";"ActivPAL";2;5,40540540540541;66,6666666666667;1,76991150442478
+"BoutDuration";"Device";"10min";"Active style";2;5,40540540540541;50;1,76991150442478
+"BoutDuration";"Device";"10min";"Vitamove";0;0;0;0
+"BoutDuration";"Device";"10min";"Hookie";1;2,7027027027027;12,5;0,884955752212389
+"BoutDuration";"Device";"10min";"GENEActiv";3;8,10810810810811;42,8571428571429;2,65486725663717
+"BoutDuration";"Device";"10min";"Axivity";2;5,40540540540541;10;1,76991150442478
+"BoutDuration";"Device";"10min";"Actiheart";2;5,40540540540541;40;1,76991150442478
+"BoutDuration";"Device";"10min";"Actigraph";18;48,6486486486486;43,9024390243902;15,929203539823
+"BoutDuration";"Device";"10min";"Actical";3;8,10810810810811;50;2,65486725663717
+"BoutDuration";"Device";"15-60min";"SenseWear";0;0;0;0
+"BoutDuration";"Device";"15-60min";"Lifecorder";0;0;0;0
+"BoutDuration";"Device";"15-60min";"ActivPAL";0;0;0;0
+"BoutDuration";"Device";"15-60min";"Active style";0;0;0;0
+"BoutDuration";"Device";"15-60min";"Vitamove";0;0;0;0
+"BoutDuration";"Device";"15-60min";"Hookie";2;33,3333333333333;25;1,76991150442478
+"BoutDuration";"Device";"15-60min";"GENEActiv";0;0;0;0
+"BoutDuration";"Device";"15-60min";"Axivity";2;33,3333333333333;10;1,76991150442478
+"BoutDuration";"Device";"15-60min";"Actiheart";0;0;0;0
+"BoutDuration";"Device";"15-60min";"Actigraph";2;33,3333333333333;4,8780487804878;1,76991150442478
+"BoutDuration";"Device";"15-60min";"Actical";0;0;0;0
+"BoutDuration";"StartYear";"?";"?";1;100;5,88235294117647;0,884955752212389
+"BoutDuration";"StartYear";"?";"2015-2019";0;0;0;0
+"BoutDuration";"StartYear";"?";"2010-2014";0;0;0;0
+"BoutDuration";"StartYear";"?";"2005-2009";0;0;0;0
+"BoutDuration";"StartYear";"?";"2000-2004";0;0;0;0
+"BoutDuration";"StartYear";"1s";"?";0;0;0;0
+"BoutDuration";"StartYear";"1s";"2015-2019";0;0;0;0
+"BoutDuration";"StartYear";"1s";"2010-2014";0;0;0;0
+"BoutDuration";"StartYear";"1s";"2005-2009";1;100;5,55555555555556;0,884955752212389
+"BoutDuration";"StartYear";"1s";"2000-2004";0;0;0;0
+"BoutDuration";"StartYear";"10-32s";"?";3;16,6666666666667;17,6470588235294;2,65486725663717
+"BoutDuration";"StartYear";"10-32s";"2015-2019";1;5,55555555555556;14,2857142857143;0,884955752212389
+"BoutDuration";"StartYear";"10-32s";"2010-2014";13;72,2222222222222;29,5454545454545;11,5044247787611
+"BoutDuration";"StartYear";"10-32s";"2005-2009";1;5,55555555555556;5,55555555555556;0,884955752212389
+"BoutDuration";"StartYear";"10-32s";"2000-2004";0;0;0;0
+"BoutDuration";"StartYear";"1min";"?";4;10,8108108108108;23,5294117647059;3,53982300884956
+"BoutDuration";"StartYear";"1min";"2015-2019";2;5,40540540540541;28,5714285714286;1,76991150442478
+"BoutDuration";"StartYear";"1min";"2010-2014";14;37,8378378378378;31,8181818181818;12,3893805309735
+"BoutDuration";"StartYear";"1min";"2005-2009";6;16,2162162162162;33,3333333333333;5,30973451327434
+"BoutDuration";"StartYear";"1min";"2000-2004";11;29,7297297297297;40,7407407407407;9,73451327433628
+"BoutDuration";"StartYear";"2-5min";"?";5;38,4615384615385;29,4117647058824;4,42477876106195
+"BoutDuration";"StartYear";"2-5min";"2015-2019";0;0;0;0
+"BoutDuration";"StartYear";"2-5min";"2010-2014";3;23,0769230769231;6,81818181818182;2,65486725663717
+"BoutDuration";"StartYear";"2-5min";"2005-2009";3;23,0769230769231;16,6666666666667;2,65486725663717
+"BoutDuration";"StartYear";"2-5min";"2000-2004";2;15,3846153846154;7,40740740740741;1,76991150442478
+"BoutDuration";"StartYear";"10min";"?";4;10,8108108108108;23,5294117647059;3,53982300884956
+"BoutDuration";"StartYear";"10min";"2015-2019";4;10,8108108108108;57,1428571428571;3,53982300884956
+"BoutDuration";"StartYear";"10min";"2010-2014";10;27,027027027027;22,7272727272727;8,84955752212389
+"BoutDuration";"StartYear";"10min";"2005-2009";7;18,9189189189189;38,8888888888889;6,19469026548673
+"BoutDuration";"StartYear";"10min";"2000-2004";12;32,4324324324324;44,4444444444444;10,6194690265487
+"BoutDuration";"StartYear";"15-60min";"?";0;0;0;0
+"BoutDuration";"StartYear";"15-60min";"2015-2019";0;0;0;0
+"BoutDuration";"StartYear";"15-60min";"2010-2014";4;66,6666666666667;9,09090909090909;3,53982300884956
+"BoutDuration";"StartYear";"15-60min";"2005-2009";0;0;0;0
+"BoutDuration";"StartYear";"15-60min";"2000-2004";2;33,3333333333333;7,40740740740741;1,76991150442478
+"Device";"StartYear";"SenseWear";"?";6;85,7142857142857;35,2941176470588;5,30973451327434
+"Device";"StartYear";"SenseWear";"2015-2019";0;0;0;0
+"Device";"StartYear";"SenseWear";"2010-2014";0;0;0;0
+"Device";"StartYear";"SenseWear";"2005-2009";1;14,2857142857143;5,55555555555556;0,884955752212389
+"Device";"StartYear";"SenseWear";"2000-2004";0;0;0;0
+"Device";"StartYear";"Lifecorder";"?";10;100;58,8235294117647;8,84955752212389
+"Device";"StartYear";"Lifecorder";"2015-2019";0;0;0;0
+"Device";"StartYear";"Lifecorder";"2010-2014";0;0;0;0
+"Device";"StartYear";"Lifecorder";"2005-2009";0;0;0;0
+"Device";"StartYear";"Lifecorder";"2000-2004";0;0;0;0
+"Device";"StartYear";"ActivPAL";"?";0;0;0;0
+"Device";"StartYear";"ActivPAL";"2015-2019";1;33,3333333333333;14,2857142857143;0,884955752212389
+"Device";"StartYear";"ActivPAL";"2010-2014";0;0;0;0
+"Device";"StartYear";"ActivPAL";"2005-2009";2;66,6666666666667;11,1111111111111;1,76991150442478
+"Device";"StartYear";"ActivPAL";"2000-2004";0;0;0;0
+"Device";"StartYear";"Active style";"?";0;0;0;0
+"Device";"StartYear";"Active style";"2015-2019";4;100;57,1428571428571;3,53982300884956
+"Device";"StartYear";"Active style";"2010-2014";0;0;0;0
+"Device";"StartYear";"Active style";"2005-2009";0;0;0;0
+"Device";"StartYear";"Active style";"2000-2004";0;0;0;0
+"Device";"StartYear";"Vitamove";"?";0;0;0;0
+"Device";"StartYear";"Vitamove";"2015-2019";0;0;0;0
+"Device";"StartYear";"Vitamove";"2010-2014";2;100;4,54545454545455;1,76991150442478
+"Device";"StartYear";"Vitamove";"2005-2009";0;0;0;0
+"Device";"StartYear";"Vitamove";"2000-2004";0;0;0;0
+"Device";"StartYear";"Hookie";"?";0;0;0;0
+"Device";"StartYear";"Hookie";"2015-2019";0;0;0;0
+"Device";"StartYear";"Hookie";"2010-2014";8;100;18,1818181818182;7,07964601769912
+"Device";"StartYear";"Hookie";"2005-2009";0;0;0;0
+"Device";"StartYear";"Hookie";"2000-2004";0;0;0;0
+"Device";"StartYear";"GENEActiv";"?";0;0;0;0
+"Device";"StartYear";"GENEActiv";"2015-2019";2;28,5714285714286;28,5714285714286;1,76991150442478
+"Device";"StartYear";"GENEActiv";"2010-2014";5;71,4285714285714;11,3636363636364;4,42477876106195
+"Device";"StartYear";"GENEActiv";"2005-2009";0;0;0;0
+"Device";"StartYear";"GENEActiv";"2000-2004";0;0;0;0
+"Device";"StartYear";"Axivity";"?";1;5;5,88235294117647;0,884955752212389
+"Device";"StartYear";"Axivity";"2015-2019";0;0;0;0
+"Device";"StartYear";"Axivity";"2010-2014";18;90;40,9090909090909;15,929203539823
+"Device";"StartYear";"Axivity";"2005-2009";1;5;5,55555555555556;0,884955752212389
+"Device";"StartYear";"Axivity";"2000-2004";0;0;0;0
+"Device";"StartYear";"Actiheart";"?";0;0;0;0
+"Device";"StartYear";"Actiheart";"2015-2019";0;0;0;0
+"Device";"StartYear";"Actiheart";"2010-2014";0;0;0;0
+"Device";"StartYear";"Actiheart";"2005-2009";5;100;27,7777777777778;4,42477876106195
+"Device";"StartYear";"Actiheart";"2000-2004";0;0;0;0
+"Device";"StartYear";"Actigraph";"?";0;0;0;0
+"Device";"StartYear";"Actigraph";"2015-2019";0;0;0;0
+"Device";"StartYear";"Actigraph";"2010-2014";11;26,8292682926829;25;9,73451327433628
+"Device";"StartYear";"Actigraph";"2005-2009";4;9,75609756097561;22,2222222222222;3,53982300884956
+"Device";"StartYear";"Actigraph";"2000-2004";26;63,4146341463415;96,2962962962963;23,0088495575221
+"Device";"StartYear";"Actical";"?";0;0;0;0
+"Device";"StartYear";"Actical";"2015-2019";0;0;0;0
+"Device";"StartYear";"Actical";"2010-2014";0;0;0;0
+"Device";"StartYear";"Actical";"2005-2009";5;83,3333333333333;27,7777777777778;4,42477876106195
+"Device";"StartYear";"Actical";"2000-2004";1;16,6666666666667;3,7037037037037;0,884955752212389

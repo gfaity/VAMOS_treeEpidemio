@@ -50,6 +50,8 @@ library(flextable) #for creating beautiful table
 library(webshot2) #for exporting tables in image
 library(chromote) #for exporting tables in pdf
 library(ggalluvial) #for sankey diagram
+library(stringr)
+library(forcats)  # Pour inverser les levels des facteurs
 
 # WRK_PATH est le chemin vers le répertoire où se trouve notre projet et où se trouvent les fichiers mocap.
 # Vous devrez ajuster ce chemin en fonction de votre propre répertoire.
@@ -137,6 +139,11 @@ doSimpleLeaves <- TRUE #TRUE #Set to FALSE to have full detailed in epoch and bo
 thisDAT_PATH <- thisDAT_PATH_real #thisDAT_PATH_simu
 data <- read.csv2(thisDAT_PATH)
 
+###
+# Inform user: Nombre d'études:
+nbStudies = length(unique(data$StudyDetails))
+cat("\n", "Nombre d'études inclues :", nbStudies, "\n")
+###
 
 # S'il y a une colonne "studyDetails" = à concatener avec StudyID
 # data$StudyID <- paste(data$StudyDetails, data$StudyID, sep = " - ") #old way
@@ -170,21 +177,35 @@ data$Device[which(data$Device=="Lifecorder-Ex")] <- "Lifecorder"
 data$Device[which(data$Device=="Hookie AM 20")] <- "Hookie"
 data$Device[which(data$Device=="ActivPAL3 Micro")] <- "ActivPAL"
 data$Device[which(data$Device=="SenseWear Pro2")] <- "SenseWear"
+data$Device[which(data$Device=="SenseWear Pro3")] <- "SenseWear"
 data$Device[which(data$Device=="Active style pro")] <- "Active style"
+
+###
+
+# Nombre de combinaison unique (avant aggregation - sans compter l'année - en comptant les études)
+nbUniqCombStudies_beforeAgg = length(data$StudyID)
+# Informer utulisateur
+cat("Nombre de combinaisons uniques (with Study) (avant aggregation) :", nbUniqCombStudies_beforeAgg, "\n")
+###
+# Nombre de combinaison unique (avant aggregation - sans compter l'année)
+nbUniqComb_beforeAgg = length(unique(interaction(data$Position, data$Device, data$EpochDuration, data$DropTime, data$BoutDuration)))
+# Informer utulisateur
+cat("Nombre de combinaisons uniques (avant aggregation - sans compter l'année) :", nbUniqComb_beforeAgg, "\n")
+###
 
 if (doSimpleLeaves){
   # Group by min bout durations
   #groups = "10-32s", "1min", "2-5min", "10-15min", "30-60min", "?"
-  data$BoutDuration[which(data$BoutDuration %in% c("10s-1min", "10s-2min", "30s-5min", "15+s", "30+s", "32+s", "?s-10min", "10-min", "15-min", "30-min"))] <- "10-32s"
-  data$BoutDuration[which(data$BoutDuration %in% c("1-3min", "1-5min", "1-10min", "1+min"))] <- "1min"
+  data$BoutDuration[which(data$BoutDuration %in% c("1+s"))] <- "1s"
+  data$BoutDuration[which(data$BoutDuration %in% c("10s-1min", "10s-2min", "10s-10min", "30s-5min", "15+s", "30+s", "32+s", "?s-10min", "10-min", "15-min", "30-min"))] <- "10-32s"
+  data$BoutDuration[which(data$BoutDuration %in% c("1-3min", "1-5min", "1-9min", "1-10min", "1-15min", "1+min"))] <- "1min"
   data$BoutDuration[which(data$BoutDuration %in% c("3-5min", "5-10min", "2+min", "3+min", "5+min"))] <- "2-5min"
   data$BoutDuration[which(data$BoutDuration %in% c("10+min"))] <- "10min"
-  data$BoutDuration[which(data$BoutDuration %in% c("15+min", "30+min", "60+min"))] <- "15-60min"
-  #TODO: à vérifier dans l'article mais normalement ok
-  # "?s-10min", "10-min", "15-min", "30-min"
+  data$BoutDuration[which(data$BoutDuration %in% c("16-40min", "15+min", "30+min", "41+min", "60+min"))] <- "15-60min"
   
   # Group by epoch duration
   #groups = "4-6s", "10s", "30s", "60s", "?"
+  data$EpochDuration[which(data$EpochDuration %in% c("1s"))] <- "1s\u2063" #ajout d'un caractere invisible (espace de largeur zero) pour évité d'être confondu avec 1s de BoutDuration
   data$EpochDuration[which(data$EpochDuration %in% c("4s","6s"))] <- "4-6s"
   
   # Group by starting year of Physical Activity Assessment
@@ -199,10 +220,10 @@ if (doSimpleLeaves){
 
 # Set things = specify possibilities in the right order
 myStudyIDs = rev(sort(data$StudyID))
-myDevices = rev(c("Actical","Actigraph", "Axivity", "GENEActiv","Hookie","Active style","ActivPAL","Lifecorder","SenseWear")) #sort devices in the order of apparition along time #rev(sort(unique(data$Device)))
+myDevices = rev(c("Actical","Actigraph", "Actiheart","Axivity", "GENEActiv","Hookie","Vitamove","Active style","ActivPAL","Lifecorder","SenseWear", "Multiple")) #sort devices in the order of apparition along time #rev(sort(unique(data$Device)))
 myDropTimes = unique(data$DropTime) #rev(unique(data$DropTime))
-myPositions = rev(c("Hip / Waist", "Wrist", "Upper arm", "Thigh")) #rev(c("Wrist", "Upper arm", "Hip / Waist", "Thigh")) #sort(unique(data$Position))
-myStartYear = rev(c("2000-2004","2005-2009","2010-2014","2015-2019","?")) #rev(sort(unique(data$StartYear)))
+myPositions = rev(c("Hip / Waist", "Chest", "Wrist", "Upper arm", "Thigh", "Multiple")) #rev(c("Wrist", "Upper arm", "Hip / Waist", "Thigh")) #sort(unique(data$Position))
+myStartYear = rev(c("2000-2004","2005-2009","2010-2014","2015-2019","2020-2024","?")) #rev(sort(unique(data$StartYear)))
 
 # TEST (TO REMOVE)
 #data$EpochDuration[which(data$EpochDuration == "?")] <- "1s"
@@ -210,14 +231,12 @@ myStartYear = rev(c("2000-2004","2005-2009","2010-2014","2015-2019","?")) #rev(s
 #ATTENTION ! Dans le if ci-dessous j'ai aussi remplacé "?" par "NA" => A voir si je peux remettre ensuite
 
 if (doSimpleLeaves){
-   myEpochDurations = c("?", "4-6s", "10s", "30s", "60s") #rev() #don't reverse finally
-   myBoutDurations = c("?", "10-32s", "1min", "2-5min", "10min", "15-60min") #rev() #don't reverse finally
+   myEpochDurations = c("?", "1s\u2063", "4-6s", "10s", "30s", "60s") #rev() #don't reverse finally
+   myBoutDurations = c("?", "1s", "10-32s", "1min", "2-5min", "10min", "15-60min") #rev() #don't reverse finally
 } else {
-  myEpochDurations = c("?", "4s","6s","10s","30s","60s") #rev() #don't reverse finally #unique(data$EpochDuration)
-  myBoutDurations = c("?", "1+epoch","10s-1min","10s-2min","30s-5min","1-3min","1-5min","1-10min","3-5min","5-10min","?s-10min","15+s","30+s","32+s","1+min","2+min","3+min","5+min","10+min","15+min","30+min","60+min","10-min","15-min","30-min") #rev() #don't reverse finally #unique(data$BoutDuration)
+  myEpochDurations = c("?", "1s\u2063", "4s","6s","10s","30s","60s") #rev() #don't reverse finally #unique(data$EpochDuration)
+  myBoutDurations = c("?", "1+epoch","10s-1min","10s-2min","10s-10min","30s-5min","1-3min","1-5min","1-9min","1-10min","1-15min","3-5min","5-10min","?s-10min","16-40min","1+s","15+s","30+s","32+s","1+min","2+min","3+min","5+min","10+min","15+min","30+min","41+min","60+min","10-min","15-min","30-min") #rev() #don't reverse finally #unique(data$BoutDuration)
 }
-
-
 
 ###
 
@@ -232,6 +251,104 @@ data <- data %>%
     BoutDuration = factor(BoutDuration, levels = myBoutDurations),
     StartYear = factor(StartYear, levels = myStartYear)
   )
+
+######################################################
+# OPTIONNEL: Weighting of width for Sankey diagram by nb of combinaison per study
+# CAUTION: à faire uniquement dans le Sankey Diagram
+
+# data <- data %>%
+#   mutate(StudyDetails = str_replace(StudyID, "_-_[0-9]+$", ""))
+# 
+# nbCombiMax = max(table(data$StudyDetails))
+# 
+# # Calcul du nombre d'occurrences pour chaque StudyDetails
+# data <- data %>%
+#   group_by(StudyDetails) %>%
+#   mutate(RibbonWidth = 1 / n()) %>%
+#   ungroup()
+# 
+# #Remove useless columns
+# data$StudyDetails <- NULL
+
+######################################################
+# OPTIONNEL: Reordonner les auteurs selon ordre des facteurs
+# Case : StartYear / Device / Position / EpochDuration / DropTime / BoutDuration
+# Don't forget that all levels are in reverse order
+doReorderArticleID <- TRUE #FALSE
+
+if (doReorderArticleID){
+  
+  # Étape 1 : Créer StudyDetails en supprimant le numéro final
+  data <- data %>%
+    mutate(StudyDetails = str_replace(StudyID, "_-_[0-9]+$", ""))
+  
+  # Étape 2 : Inverser l'ordre des niveaux des facteurs
+  data <- data %>%
+    mutate(
+      StartYear = fct_rev(as.factor(StartYear)),  # Inversion des niveaux
+      Device = fct_rev(as.factor(Device)),
+      Position = fct_rev(as.factor(Position)),
+      EpochDuration = fct_rev(as.factor(EpochDuration)),
+      DropTime = fct_rev(as.factor(DropTime)),
+      BoutDuration = fct_rev(as.factor(BoutDuration))
+    )
+  
+  # Étape 3 : Trier selon l'ordre inversé des facteurs
+  data <- data %>%
+    arrange(StartYear, Device, Position, EpochDuration, DropTime, BoutDuration)
+  
+  # Étape 4 : Créer interactFactor (uniquement pour information, sans regroupement)
+  # data$interactFactor <- interaction(data$StartYear, data$Device, data$Position, 
+  #                                    data$EpochDuration, data$DropTime, 
+  #                                    data$BoutDuration, data$StudyDetails, sep = ".")
+
+  # Étape 5 : Numéroter les études en respectant l'ordre défini (SANS fusionner les interactFactor)
+  data <- data %>%
+    group_by(StudyDetails) %>%
+    mutate(numero = row_number()) %>%  # Garde la numérotation unique même si interactFactor est le même
+    ungroup()
+  
+  # Étape 6 : Recréer StudyID avec la nouvelle numérotation
+  data <- data %>%
+    mutate(StudyID = paste0(StudyDetails, "_-_", numero)) %>%
+    select(-StudyDetails) # On garde groupNum pour info
+  
+  # Étape 7 : Re-Inverser l'ordre des niveaux des facteurs
+  data <- data %>%
+    mutate(
+      StudyID = fct_rev(as.factor(StudyID)), 
+      StartYear = fct_rev(as.factor(StartYear)),  # Inversion des niveaux
+      Device = fct_rev(as.factor(Device)),
+      Position = fct_rev(as.factor(Position)),
+      EpochDuration = fct_rev(as.factor(EpochDuration)),
+      DropTime = fct_rev(as.factor(DropTime)),
+      BoutDuration = fct_rev(as.factor(BoutDuration))
+    )
+  
+  # Vérification finale
+  # print(data$StudyID)
+}
+
+######################################################
+# OPTIONNEL: virer les niveaux des facteurs qui ne sont pas affectés [nécessaire pour le chi2 test]
+data <- data %>% mutate(across(where(is.factor), droplevels))
+
+######################################################
+
+###
+# Nombre de combinaison unique (après aggregation - sans compter l'année - en comptant les études)
+nbUniqCombStudies_afterAgg = length(data$StudyID)
+# Informer utulisateur
+cat("Nombre de combinaisons uniques (with Study) (après aggregation) :", nbUniqCombStudies_afterAgg, "\n")
+###
+# Nombre de combinaison unique (après aggregation - sans compter l'année)
+nbUniqComb_afterAgg = length(unique(interaction(data$Position, data$Device, data$EpochDuration, data$DropTime, data$BoutDuration)))
+# Informer utulisateur
+cat("Nombre de combinaisons uniques (après aggregation - sans compter l'année) :", nbUniqComb_afterAgg, "\n")
+###
+
+
+######################################################
 
 #############
 
@@ -325,7 +442,7 @@ if (whichWay==1){
     createSavePlotTree(data, variable_order, savePlot = TRUE, pathSavePlot, plotTitle)
     
     # Informer de la progression
-    cat("Plot enregistré pour l'ordre :", variable_order_str, "\n")
+    cat("\n", "Plot enregistré pour l'ordre :", variable_order_str, "\n")
   }
 }
 ```

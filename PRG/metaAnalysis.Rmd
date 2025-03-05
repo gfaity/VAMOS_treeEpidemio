@@ -1,0 +1,307 @@
+---
+title: "META ANALYSIS"
+format:
+  html:
+    self-contained: true
+---
+
+
+Voilà ce que je trouve en termes d'indicateurs dans les différentes études pour la performance de bout détection/classification:
+
+Hickey and al., 2017
+Bout count: relative - rho (Spearman correlations) = 0.909, p<0.0005 / absolute - ICC(2,1) = 0.941, p ⩽ 0.0005
+
+Lyden and al., 2017
+Agreements between DO and all AP estimates (range ICC: 0.78–0.99, P<0.05). 
+Guideline bouts: Bias = -0.3, rMSE = 0.7, ICC = 0.92
+Guideline minutes: Bias =-5.4, rMSE = 17.3, ICC = 0.91
+MVPA (min): 68.3: Bias = -2.6, rMSE = 8.4, ICC = 0.98
+Light (min): Bias = 1.7, rMSE = 12.3, ICC = 0.99
+
+Pavey and al., 2017
+Laboratory trial
+Walk: Sensitivity = 0.92, Specificity = 0.99, PPV = 0.94, NPV = 0.99, Balanced accuracy = 0.95
+Run: Sensitivity = 0.94, Specificity = 0.99, PPV = 0.98, NPV = 0.99, Balanced accuracy = 0.97
+Weighted Kappa = 0.88 ± 0.12
+Free-living trial
+Stepping vs. non-stepping: Accuracy = 93.7 (2.4%), Sensitivity = 53.8 (11.5%), Specificity = 96.3 (1.4%), PPV = 47.7 (11.7%), NPV = 96.9 (1.7%), Balanced accuracy = 75.1 (5.7%), Kappa = 0.47 (0.10)
+Stepping time estimates: ICC = 0.92 (95% CI = 0.75–0.97)
+Mean bias = -10.3 min/d (95% LOA= -46.0 to 25.4 min/d)
+
+Wullems and al., 2017
+LIPA: Sensitivity = 63.7, Specificity = 97.5, Balanced accuracy = 80.6
+MVPA: Sensitivity = 97.3, Specificity = 92.9, Balanced accuracy = 95.1
+
+A mon sens difficile d'envisager la méta-analyse car :
+- les indicateurs statistiques utilisés sont assez différents
+- l'objet de l'analyse diffère (bout count, stepping/running classification, LIPA/MVPA classification)
+- quand l'objet de l'analyse est identique, la méthodologie était différente (ex. bout counts for Hickey VS Guideline bout count for Lyden)
+
+Qu'en pensez vous? Ce seront néanmoins des éléments intéressants à expliciter dans l'article.
+
+Merci pour la réunion, je vous transmets le CR dès qu'il est finalisé.
+
+Bonne fin de journée
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE
+)
+#.vsc.attach()
+rm(list = ls()) # clear all variable
+gc() #clear garbage to free memory
+```
+
+# Not Run
+Pour installer ggtree et Biostrings:
+
+### Biostrings
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Biostrings")
+
+### ggtree
+library(BiocManager)
+BiocManager::install("ggtree")
+
+```{r}
+#| echo: true
+#| code-fold: false
+
+# libraries
+library(dplyr) # manipulation de dataframes
+library(tidyr) # opération sur les dataframes
+library(ggplot2) # génération de graphique
+
+# WRK_PATH est le chemin vers le répertoire où se trouve notre projet et où se trouvent les fichiers mocap.
+# Vous devrez ajuster ce chemin en fonction de votre propre répertoire.
+WRK_PATH <- "C:/Users/germa/OneDrive/Documents/GitHub/VAMOS_treeEpidemio"
+
+# La fonction `setwd()` change le répertoire de travail pour celui que nous avons défini dans WRK_PATH.
+# Cela signifie que toute lecture/écriture de fichiers se fera à partir de ce répertoire.
+setwd(WRK_PATH)
+
+# On utilise la fonction `getwd()` pour afficher le répertoire de travail actuel et vérifier que le changement a bien eu lieu.
+cat("Répertoire de travail actuel :", getwd(), "\n")
+
+# Ensuite, nous définissons le chemin vers le dossier contenant les données à traiter et le chemin pour les résultats.
+# Ce dossier se trouve à l'intérieur de notre répertoire de travail.
+DAT_PATH <- file.path(WRK_PATH, "DAT")
+PRG_PATH <- file.path(WRK_PATH, "PRG")
+FCT_PATH <- file.path(PRG_PATH, "FCT") #dossier contenant les fonctions R
+RES_PATH <- file.path(WRK_PATH, "RES")
+
+# On affiche également le chemin vers les données pour s'assurer qu'il est correct.
+cat("Répertoire des données :", DAT_PATH, "\n")
+
+# Lire les fonctions R
+r_files <- list.files(FCT_PATH, pattern = "\\.R$", full.names = TRUE)
+# Charger chaque fichier .R sans afficher de sortie
+invisible(lapply(r_files, source))
+# Afficher le nombre de fichiers .R chargés
+cat(length(r_files), "fichiers .R chargés avec succès.\n")
+```
+
+# Étape 1 : Création d'un tableau fictif
+Voici un jeu de données fictif basé sur les informations fournies. Vous pouvez copier et coller ce tableau dans votre code R pour créer l'arbre.
+
+## TEST AVEC FAUSSES DONNEES
+
+```{r}
+library(metafor)
+
+# Données des ICC avec IC95% récupérés des études / estimés pour test
+dat <- data.frame(
+  study = c("Hickey2017", "Lyden2017", "Pavey2017", "Wullems2017"), #, "Bizarre1999"),
+  ICC = c(0.941, 0.92, 0.92, 0.95), #, 0.85),
+  lo = c(0.90, 0.85, 0.75, 0.90), #, 0.75),
+  hi = c(0.98, 0.95, 0.97, 0.98), #, 0.95),
+  N = c(20, 13, 21, 40), #, 20),
+  Placement = c("Back", "Thigh", "Wrist", "Thigh") #, "Wrist") # Position du capteur
+)
+
+# Convertir ICC en Fisher’s Z
+dat$z <- 0.5 * log((1 + dat$ICC) / (1 - dat$ICC))
+dat$z_lo <- 0.5 * log((1 + dat$lo) / (1 - dat$lo))
+dat$z_hi <- 0.5 * log((1 + dat$hi) / (1 - dat$hi))
+dat$sei <- (dat$z_hi - dat$z_lo) / (2 * 1.96)
+
+# Méta-analyse des ICC (modèle à effets aléatoires)
+res <- rma.uni(yi = dat$z, sei = dat$sei, data = dat, method = "REML")
+
+# Résumé des résultats
+summary(res)
+
+# Get mean estimate of ICC (transform from Z to ICC)
+estimateZ <- res$b[[1]]
+estimateICC <- (exp(2 * estimateZ) - 1) / (exp(2 * estimateZ) + 1)
+print(paste("Estimate ICC =", round(estimateICC,2)))
+
+# Forest plot
+forest(res, slab=dat$study, xlab="Fisher's Z", mlab="Random Effects Model")
+
+# Vérifier l'hétérogénéité
+res$I2
+```
+
+## REEL
+
+Scrapping des données
+
+### Hickey 2017
+
+N: "10"
+Njustif: Ten healthy (free from physical and neurological conditions) participants ranging in age
+20–33 years (27.5 ± 4.7 years; 1.74 ± 0.07 m; 70.4 ± 8.8kg) volunteered for this study.
+
+Device: Axivity AX3
+Position: "Lower Back"
+Device and position justif: Participants wore a low-cost (≈£100) tri-axial accelerometer-based wearable (AX3; Axivity, York, UK; 23.0mm × 32.5mm × 7.6 mm, 9g) located on the fifth lumbar vertebra (L5). 
+
+Objective: The purpose of this study is to validate the algorithm (used on the wearable accelerometer data) to detect gait in free-living environments for step and bout count.
+
+Gold standard: "Observation" (video-data).
+Gold standard justif: Video data extracted from the wearable camera [on the chest] were analysed for macro
+gait (step and bout count) using ELAN Linguistic Annotator (Version 4.9.2, The Language
+Archive, Nijmegen, Netherlands) and annotated alongside the wearable acceleration signals.
+
+Stats Method: Spearman’s correlations and intra-class correlations (ICC(2,1))
+were used to examine the relative and absolute agreement between the video and algorithm,
+respectively (Fortune et al 2014, Lugade et al 2014). 
+
+ICC [Bout count]: 0.941
+ICC95% low/hi [Bout count]: unknown
+ICC [Step count]: 0.975
+ICC95% low/hi [Step count]: unknown
+ICC justif: Intra-class correlations demonstrated excellent absolute agreement for step
+count (ICC(2,1) = 0.975, p ⩽ 0.0005) and bout count (ICC(2,1) = 0.941, p ⩽ 0.0005).
+
+PROBLEM DETECTED: no value of 95% limit of agreement for ICC !
+
+=> EXCLUDE FROM META ANALYSIS
+
+### Lyden 2017
+
+N: "13"
+Njustif: Thirteen participants (five males and eight females) were recruited from the surrounding community.
+
+Device: ActivPal
+Device justif: The activPALTM Accurately Classifies Activity Intensity Categories in Healthy Adults
+
+Position: "Thigh"
+Position justif: Participants wore the AP on the midline of their right thigh, one-third of the way between the hip and the knee. 
+
+Objective: The primary purpose of this study was to address these limitations by first testing the validity of the EE outputs from the AP [ActivPAL] to classify behavior into sedentary (G1.5 METs), light (1.5–2.99 METs), and MVPA (Q3 METs) intensity categories during free-living behavior. 
+
+Gold standard: "Observation" (direct observation).
+Gold standard justif: Direct observation (DO) served as the criterion. DO allowed for the criterion validation of sedentary, standing and total activity time, and concurrent validation of time spent in activity intensity categories. Participants were met by a trained observer in their natural environment (e.g., home, place of work, and school) and observed for approximately 10 consecutive hours. Observers worked in 2- to 4-h shifts, and a total of three different observers completed all of the observation sessions. A handheld personal digital assistant (PDA) (Noldus Information Technology, Netherlands) was used to record participant behavior (activity type, intensity, and duration). Every time behavior changed (e.g., sitting to standing), the observer recorded the new activity type and intensity in the PDA. Each entry was time stamped, and the length of each behavior bout was automatically recorded in the PDA. During the 10-h observation time, subjects were allowed to have ‘‘private time’’ when needed, and these data were removed from the AP file.
+
+Stats Method: To account for the lack of independence within subject, repeated-measures linear mixed models were used to compare AP estimates to DO. Bias (95% confidence interval [CI]), root-mean-square error, and ICC two-way ANOVA model were used to evaluate AP performance. Bland–Altman analyses were also performed.
+
+PROBLEM DETECTED: Pas d'estimation de l'ICC pour les périodes de marche: uniquement guideline bouts qui serait le plus proche de ce que l'on cherche mais ne couvre que les bouts de MVPA d'au moins 10 minutes consécutives. Ou sinon number sedentary bouts mais (>30min).
+
+Quelque données tout de même: 
+Agreements between DO and all AP estimates (range ICC: 0.78–0.99, P<0.05). 
+Guideline bouts: Bias = -0.3, rMSE = 0.7, ICC = 0.92 [0.84-0.96]
+Guideline minutes: Bias =-5.4, rMSE = 17.3, ICC = 0.91 [0.83-0.95]
+MVPA (min): 68.3: Bias = -2.6, rMSE = 8.4, ICC = 0.98 [0.95-0.99]
+Light (min): Bias = 1.7, rMSE = 12.3, ICC = 0.99 [0.99-1.00]
+Number sedentary bouts (>30min): ICC = 0.86 [0.73-0.93]
+
+=> EXCLUDE FROM META ANALYSIS
+
+### Pavey 2017
+
+N: "21" en lab ou "16" en free-living
+Njustif:  Twenty-one participants (mean age = 27.6 ± 6.2) completed seven lab-based activity trials and a 24 h free-living trial (N = 16)
+
+Device: GENEActiv
+Position: "Wrist" (non-dominant)
+Device and position justif: Self-reported demographics were collected and theGENEActiv monitor was placed on the non-dominant wrist, and the activPAL attached to the thigh. 
+
+Objective: The aims of this study were to: (1) train and test a random forest activity classifier for wrist accelerometer data; and (2) determine ifmodels trained on laboratory data perform well under free-living conditions
+
+Gold standard: "ActivPAL" (device).
+Gold standard justif: [...] the activPAL attached to the thigh
+
+Stats Method: Accuracy was evaluated by calculating sensitivity, specificity, positive predictive value, negative predictive value, and balanced accuracy for each activity class (sedentary, stationary+, walking and running). [...] Agreement between the random forest classifier and activPAL was evaluated by calculating sensitivity, specificity, positive predictive value, negative predictive value, and balanced accuracy. In addition, agreement between random forest and activPAL predicted time spent (min) in stepping was evaluated using the Intraclass correlation coefficient (ICC) and Bland–Altman plots.
+
+Results: When predictions were dichomotised as “stepping vs non-stepping”, recognition accuracy for stepping was 93.5%.Sensitivity, specificity, PPV, NPV, and balanced accuracy were 93.5%, 98.9%, 97.2% and 96.2%, respectively for the laboratory results.
+[For the free-living,] Stepping time estimates from the random forest classifier were strongly correlated to the activPAL, with an ICC of 0.92 (95% CI = 0.75–0.97). 
+[For the free-living,] When the participant with approximately 250min per day of stepping was excluded from the dataset, the ICC for stepping time was 0.72 (95% CI = 0.31–0.91). 
+
+PROBLEM DETECTED: No stepping bout detection, only ICC for stepping time !
+
+=> EXCLUDE FROM META ANALYSIS
+
+### Wullems 2017
+
+N: "40"
+Njustif: Forty healthy older adults (73.5 (6.3) years; 50% female) participated in this study
+
+Device: GENEActiv
+Position: "Thigh" (x2)
+Device and position justif: two GENEActiv Original triaxial accelerometers (Activinsights Ltd., Kimbolton, UK) with range ±8 g (1 g = 9.81 ms-2) and weighing 16 grams each, were fitted bilaterally on the anterior mid-thigh (at 50% of the distance between trochanter major and lateral femur epicondyle). 
+
+Objective: The main aim of the present study was to compare between traditional cut-off points and machine learning, for the provision of the best performing algorithm to classify SB [sedentary behavior] and PA [physical activity] in a heterogeneous population of older adults using thigh-mounted triaxial accelerometry. 
+
+Gold standard: "Indirect calorimetry" [/+/ "Observation" (camera)]
+Gold standard justif:
+- To estimate energy expenditure during the activities (see below) we used indirect calorimetry.
+- To classify activity intensities, we used metabolic equivalent (MET) values. These values were calculated per participant for all the one-minute expired gas samples taken during the activity protocol. 
+- A standard digital video camera was time-synchronised and used to record the entire testing session, which served as a criterion measure and allowed direct observation of all activities post laboratory protocol completion.
+
+Stats Method: Classification into Sedentary / Standing / LIPA / MVPA.
+Based on the performed 10-s window cross-validations, confusion matrices were created per participant per algorithm. Eventually, these matrices were used to determine balanced accuracy per intensity for each algorithm
+from two perspectives: 1) participant-specific and 2) overall (all participants’ confusion matrices summed).
+Balanced accuracy = (Sensitivity + Specificity) /2
+Sensitivity = (True positives (N) / (True positives (N) + False negatives (N))) * 100
+Specificity = (True negatives (N) / (True negatives (N) + False positives (N))) * 100
+where N represents the number of cases. 
+
+Results: The confusion matrix shows that all algorithms classified sedentary activity with overall balanced accuracies of >99.5% (Table 3). Sensitivity and specificity values were >99.2%.
+
+PROBLEM DETECTED: No ICC for stepping bouts, only sensitivity and specificity !
+
+=> EXCLUDE FROM META ANALYSIS
+
+##
+
+Mail de réponse:
+
+Hello,
+Après avoir passé un peu de temps à étudier les articles également pour m'en imprégner (et tenter une méta-analyse corrigée), j'en arrive à la même conclusion, donc tout à fait d'accord pour plutôt passer sur une revue narrative des résultats de ces 4 études.
+
+Outres les différences de devices, de protocole, d'objectifs, je note ces problèmes principaux empechant de faire une méta-analyse sur la performance de détection des bouts de marche et/ou d'activité physique (au sens mathématique):
+- Hickey 2017: rapporte l'ICC mais pas les limites hautes et basses de l'interval de confiance à 95%, donc impossible de faire méta-analyse avec ça...
+- Lyden 2017: Pas d'estimation de l'ICC pour les périodes de marche: uniquement guideline bouts qui serait le plus proche de ce que l'on cherche mais ne couvre que les bouts de MVPA d'au moins 10 minutes consécutives. Ou sinon number sedentary bouts mais (>30min).
+- Pavey 2017: No stepping bout detection, only ICC for stepping time
+- Wullems 2017: No ICC for stepping bouts, only sensitivity and specificity
+
+On peut lire sur le site du cochrane quelques recommandations pour quand faire une meta-analyse (ici: https://cccrg.cochrane.org/sites/cccrg.cochrane.org/files/uploads/meta-analysis_revised_december_1st_1_2016.pdf):
+"Meta-analysis is appropriate when the following criteria can be met by the studies of
+interest:
+• All the outcomes are comparable and can be pooled meaningfully.
+• All the interventions and comparators are the same, or at least similar enough
+to be combined meaningfully.
+• The correct data are available for the included studies; for example, means and
+standard deviations are necessary to analyse a continuous outcome (Note: even if
+the results are not reported in this format by the study authors, mean and standard
+deviation can often be calculated from the data provided).
+
+Two studies is a sufficient number to perform a meta-analysis, provided that those two
+studies can be meaningfully pooled and provided their results are sufficiently ‘similar’.
+
+Whether studies are considered sufficiently ‘similar’ can be interpreted using a
+measurement of ‘heterogeneity,’ the extent of which guides the meta-analysis. Too
+much heterogeneity indicates that meta-analysis may be contra-indicated (see CCC
+‘Heterogeneity and subgroup analysis’ guide at http://cccrg.cochrane.org/authorresources)."
+
+Pour ce qui est de l'analyse narrative, voici un brouillon de rédaction à modifier à votre guise (ou ne pas prendre en compte) issu d'une rédaction rapide suite à ma petite analyse de ce matin:
+
+[A VOIR PLUS TARD]
+
+Bonne journée,
+Germain
+
