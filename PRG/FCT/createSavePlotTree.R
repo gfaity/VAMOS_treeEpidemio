@@ -164,7 +164,7 @@ createSavePlotTree <- function (data, variable_order, savePlot, pathSavePlot, pl
     data            = data,
     variable_order  = variable_order,       # On transmet l'ordre, StudyID sera exclu
     pathSavePlot    = pathSankey,
-    plotTitle       = "Sankey Diagram - All Variables",
+    plotTitle       = NULL, #"Sankey Diagram - All Variables",
     doSavePlot      = TRUE
   )
   #print(mySankey)  # Affiche le plot

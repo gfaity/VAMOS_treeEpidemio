@@ -4,16 +4,16 @@ StudyID;Position;Device;EpochDuration;DropTime;BoutDuration;StudyDetails;Physica
 3;Wrist;Axivity AX3;10s;No;1-3min;Ahmadi et al., 2023;2013
 4;Wrist;Axivity AX3;10s;No;3-5min;Ahmadi et al., 2023;2013
 5;Wrist;Axivity AX3;10s;No;5-10min;Ahmadi et al., 2023;2013
-6;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2012;2010
-7;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2012;2010
-8;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2012;2010
-9;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2012;2010
-10;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2012;2010
-11;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2013;2011
-12;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2013;2011
-13;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2013;2011
-14;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2013;2011
-15;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2013;2011
+6;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2012;?
+7;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2012;?
+8;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2012;?
+9;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2012;?
+10;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2012;?
+11;Waist;Lifecorder-Ex;4s;No;32+s;Ayabe et al., 2013;?
+12;Waist;Lifecorder-Ex;4s;No;1+min;Ayabe et al., 2013;?
+13;Waist;Lifecorder-Ex;4s;No;3+min;Ayabe et al., 2013;?
+14;Waist;Lifecorder-Ex;4s;No;5+min;Ayabe et al., 2013;?
+15;Waist;Lifecorder-Ex;4s;No;10+min;Ayabe et al., 2013;?
 16;Hip;Actigraph;60s;No;1-9min;Barone Gibbs et al., 2020;2005
 17;Hip;Actigraph;60s;Yes;10+min;Barone Gibbs et al., 2020;2005
 18;Waist;Actigraph;30s;No;30+s;Cameron et al., 2017;2010
@@ -35,10 +35,10 @@ StudyID;Position;Device;EpochDuration;DropTime;BoutDuration;StudyDetails;Physica
 34;Hip;Actigraph;60s;No;10+min;De Winter et al., 2018;2003
 35;Hip;Actigraph;60s;No;30+min;De Winter et al., 2018;2003
 36;Hip;Actigraph;60s;No;60+min;De Winter et al., 2018;2003
-37;Hip;Axivity AX3;?;No;1+min;Del Din et al., 2020;2019
-38;Upper arm;SenseWear Pro2;?;No;?;Di Blasio et al., 2014;2011
-39;Upper arm;SenseWear Pro2;?;No;5+min;Di Blasio et al., 2014;2011
-40;Upper arm;SenseWear Pro2;?;No;10+min;Di Blasio et al., 2014;2011
+37;Hip;Axivity AX3;?;No;1+min;Del Din et al., 2020;2017
+38;Upper arm;SenseWear Pro2;?;No;?;Di Blasio et al., 2014;?
+39;Upper arm;SenseWear Pro2;?;No;5+min;Di Blasio et al., 2014;?
+40;Upper arm;SenseWear Pro2;?;No;10+min;Di Blasio et al., 2014;?
 41;Hip;Actical;60s;No;1+min;Diaz et al., 2019;2009
 42;Hip;Actigraph;60s;No;1+min;Dos Santos et al., 2020;2013
 43;Hip;Actigraph;60s;No;10+min;Dos Santos et al., 2020;2013
@@ -50,9 +50,9 @@ StudyID;Position;Device;EpochDuration;DropTime;BoutDuration;StudyDetails;Physica
 49;Hip;Actigraph;60s;No;10+min;Gay et al., 2016;2003
 50;Waist;Actical;30s;No;30+s;Glazer et al., 2013;2008
 51;Waist;Actical;30s;Yes;10+min;Glazer et al., 2013;2008
-52;Upper arm;SenseWear Pro3;60s;No;1+min;Jackson et al., 2023;2022
-53;Upper arm;SenseWear Pro3;60s;No;10+min;Jackson et al., 2023;2022
-54;Upper arm;SenseWear Pro3;60s;No;10-min;Jackson et al., 2023;2022
+52;Upper arm;SenseWear Pro3;60s;No;1+min;Jackson et al., 2023;2011
+53;Upper arm;SenseWear Pro3;60s;No;10+min;Jackson et al., 2023;2011
+54;Upper arm;SenseWear Pro3;60s;No;10-min;Jackson et al., 2023;2011
 55;Hip;Actigraph;60s;No;1-10min;Jefferis et al., 2016;2010
 56;Hip;Actigraph;60s;No;10+min;Jefferis et al., 2016;2010
 57;Hip;Actigraph;60s;No;1-10min;Jefferis et al., 2019a;2010

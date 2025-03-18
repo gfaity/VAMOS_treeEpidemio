@@ -84,7 +84,7 @@ cat(length(r_files), "fichiers .R chargés avec succès.\n")
 
 # Étape 1 : Création d'un tableau fictif
 Voici un jeu de données fictif basé sur les informations fournies. Vous pouvez copier et coller ce tableau dans votre code R pour créer l'arbre.
-~
+
 ```{r}
 #TODO: set this if chunk to TRUE if we want to simulate random data
 
